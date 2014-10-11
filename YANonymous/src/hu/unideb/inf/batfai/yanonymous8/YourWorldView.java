@@ -103,7 +103,7 @@ public class YourWorldView extends android.view.View {
 		if (first) {
 
 			first = false;
-			anonyms.add(new Anonymous(true, "Asd", gx + width / 2, gy
+			anonyms.add(new Anonymous(true, "Android", gx + width / 2, gy
 					+ height / 2));
 
 			int resId = getResources().getIdentifier("ic_launcher", "drawable",
@@ -281,7 +281,7 @@ public class YourWorldView extends android.view.View {
 					if (d(selectedA.x, selectedA.y, gx + x, gy + y) > 4 * size
 							* size) {
 
-						Anonymous a = new Anonymous("Asd", gx + x, gy + y);
+						Anonymous a = new Anonymous("Android", gx + x, gy + y);
 						anonyms.add(a);
 
 						relations.add(new Relation(selectedA, a));

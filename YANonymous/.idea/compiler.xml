@@ -25,7 +25,9 @@
         <module name="YANonymous-8" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="1.8" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="YANonymous-8" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 

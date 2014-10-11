@@ -27,10 +27,17 @@ public class SocketClient implements Runnable {
 
     private Person readData(Anonymous a){
         Person.Builder person = Person.newBuilder();
-        person.setMeId(1);
-        //person.setMeId(Integer.valueOf(a.name));
-        person.setChosen(Person.Chosen.Valami1);
 
+        if ( a.name == "Android")
+            person.setChosen(Person.Chosen.Android);
+        else if ( a.name == "iOS")
+            person.setChosen(Person.Chosen.iOS);
+        else if ( a.name == "Windows")
+            person.setChosen(Person.Chosen.Windows);
+        else
+            person.setChosen(Person.Chosen.Others);
+
+        person.setMeId(1);
 
         return person.build();
     }

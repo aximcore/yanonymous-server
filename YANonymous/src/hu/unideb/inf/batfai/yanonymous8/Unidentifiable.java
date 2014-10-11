@@ -53,21 +53,14 @@ interface Unidentifiable {
         public static final java.util.Map<String, Integer> partyColors = java.util.Collections
                 .unmodifiableMap(new java.util.LinkedHashMap<String, Integer>() {
             {
-                put("Asd",
+                put("Android",
                         android.graphics.Color.argb(0xb0, 0x01, 0x0a, 0xbf));
-                put("Fidesz",
+                put("iOS",
                         android.graphics.Color.argb(0xb0, 0xef, 0x9a, 0x2b));
-                put("MSZP",
+                put("Windows",
                         android.graphics.Color.argb(0xb0, 0xef, 0x07, 0x0c));
-                put("KDNP",
+                put("Others",
                         android.graphics.Color.argb(0xb0, 0xf1, 0xec, 0x5b));
-                put("Jobbik",
-                        android.graphics.Color.argb(0xb0, 0x4d, 0x53, 0x53));
-                put("LMP",
-                        android.graphics.Color.argb(0xb0, 0x1d, 0x8e, 0x06));
-                put("YANO",
-                        android.graphics.Color.argb(0xb0, 0x80, 0xe3, 0x05));
-
             }
         });
     }

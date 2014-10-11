@@ -205,31 +205,49 @@ public final class YanoProto {
     public enum Chosen
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
-       * <code>Valami1 = 1;</code>
+       * <code>Android = 1;</code>
        */
-      Valami1(0, 1),
+      Android(0, 1),
       /**
-       * <code>Valami2 = 2;</code>
+       * <code>iOS = 2;</code>
        */
-      Valami2(1, 2),
+      iOS(1, 2),
+      /**
+       * <code>Windows = 3;</code>
+       */
+      Windows(2, 3),
+      /**
+       * <code>Others = 4;</code>
+       */
+      Others(3, 4),
       ;
 
       /**
-       * <code>Valami1 = 1;</code>
+       * <code>Android = 1;</code>
        */
-      public static final int Valami1_VALUE = 1;
+      public static final int Android_VALUE = 1;
       /**
-       * <code>Valami2 = 2;</code>
+       * <code>iOS = 2;</code>
        */
-      public static final int Valami2_VALUE = 2;
+      public static final int iOS_VALUE = 2;
+      /**
+       * <code>Windows = 3;</code>
+       */
+      public static final int Windows_VALUE = 3;
+      /**
+       * <code>Others = 4;</code>
+       */
+      public static final int Others_VALUE = 4;
 
 
       public final int getNumber() { return value; }
 
       public static Chosen valueOf(int value) {
         switch (value) {
-          case 1: return Valami1;
-          case 2: return Valami2;
+          case 1: return Android;
+          case 2: return iOS;
+          case 3: return Windows;
+          case 4: return Others;
           default: return null;
         }
       }
@@ -308,6 +326,16 @@ public final class YanoProto {
        */
       hu.unideb.inf.batfai.yanonymous8.YanoProto.PersonOrBuilder getPersonOrBuilder(
           int index);
+
+      // required .Person.Relations.Relation relation = 2;
+      /**
+       * <code>required .Person.Relations.Relation relation = 2;</code>
+       */
+      boolean hasRelation();
+      /**
+       * <code>required .Person.Relations.Relation relation = 2;</code>
+       */
+      hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations.Relation getRelation();
     }
     /**
      * Protobuf type {@code Person.Relations}
@@ -368,6 +396,17 @@ public final class YanoProto {
                 person_.add(input.readMessage(hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.PARSER, extensionRegistry));
                 break;
               }
+              case 16: {
+                int rawValue = input.readEnum();
+                hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations.Relation value = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations.Relation.valueOf(rawValue);
+                if (value == null) {
+                  unknownFields.mergeVarintField(2, rawValue);
+                } else {
+                  bitField0_ |= 0x00000001;
+                  relation_ = value;
+                }
+                break;
+              }
             }
           }
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -410,6 +449,190 @@ public final class YanoProto {
         return PARSER;
       }
 
+      /**
+       * Protobuf enum {@code Person.Relations.Relation}
+       */
+      public enum Relation
+          implements com.google.protobuf.ProtocolMessageEnum {
+        /**
+         * <code>Relational = 1;</code>
+         *
+         * <pre>
+         * rokoni
+         * </pre>
+         */
+        Relational(0, 1),
+        /**
+         * <code>Friend = 2;</code>
+         *
+         * <pre>
+         * barát
+         * </pre>
+         */
+        Friend(1, 2),
+        /**
+         * <code>Girlfriend = 3;</code>
+         *
+         * <pre>
+         * csajom
+         * </pre>
+         */
+        Girlfriend(2, 3),
+        /**
+         * <code>Boyfriend = 4;</code>
+         *
+         * <pre>
+         * pasim
+         * </pre>
+         */
+        Boyfriend(3, 4),
+        /**
+         * <code>Father = 5;</code>
+         *
+         * <pre>
+         * apa
+         * </pre>
+         */
+        Father(4, 5),
+        /**
+         * <code>Mother = 6;</code>
+         *
+         * <pre>
+         * anya
+         * </pre>
+         */
+        Mother(5, 6),
+        /**
+         * <code>Neighbor = 7;</code>
+         *
+         * <pre>
+         * szomszéd
+         * </pre>
+         */
+        Neighbor(6, 7),
+        ;
+
+        /**
+         * <code>Relational = 1;</code>
+         *
+         * <pre>
+         * rokoni
+         * </pre>
+         */
+        public static final int Relational_VALUE = 1;
+        /**
+         * <code>Friend = 2;</code>
+         *
+         * <pre>
+         * barát
+         * </pre>
+         */
+        public static final int Friend_VALUE = 2;
+        /**
+         * <code>Girlfriend = 3;</code>
+         *
+         * <pre>
+         * csajom
+         * </pre>
+         */
+        public static final int Girlfriend_VALUE = 3;
+        /**
+         * <code>Boyfriend = 4;</code>
+         *
+         * <pre>
+         * pasim
+         * </pre>
+         */
+        public static final int Boyfriend_VALUE = 4;
+        /**
+         * <code>Father = 5;</code>
+         *
+         * <pre>
+         * apa
+         * </pre>
+         */
+        public static final int Father_VALUE = 5;
+        /**
+         * <code>Mother = 6;</code>
+         *
+         * <pre>
+         * anya
+         * </pre>
+         */
+        public static final int Mother_VALUE = 6;
+        /**
+         * <code>Neighbor = 7;</code>
+         *
+         * <pre>
+         * szomszéd
+         * </pre>
+         */
+        public static final int Neighbor_VALUE = 7;
+
+
+        public final int getNumber() { return value; }
+
+        public static Relation valueOf(int value) {
+          switch (value) {
+            case 1: return Relational;
+            case 2: return Friend;
+            case 3: return Girlfriend;
+            case 4: return Boyfriend;
+            case 5: return Father;
+            case 6: return Mother;
+            case 7: return Neighbor;
+            default: return null;
+          }
+        }
+
+        public static com.google.protobuf.Internal.EnumLiteMap<Relation>
+            internalGetValueMap() {
+          return internalValueMap;
+        }
+        private static com.google.protobuf.Internal.EnumLiteMap<Relation>
+            internalValueMap =
+              new com.google.protobuf.Internal.EnumLiteMap<Relation>() {
+                public Relation findValueByNumber(int number) {
+                  return Relation.valueOf(number);
+                }
+              };
+
+        public final com.google.protobuf.Descriptors.EnumValueDescriptor
+            getValueDescriptor() {
+          return getDescriptor().getValues().get(index);
+        }
+        public final com.google.protobuf.Descriptors.EnumDescriptor
+            getDescriptorForType() {
+          return getDescriptor();
+        }
+        public static final com.google.protobuf.Descriptors.EnumDescriptor
+            getDescriptor() {
+          return hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations.getDescriptor().getEnumTypes().get(0);
+        }
+
+        private static final Relation[] VALUES = values();
+
+        public static Relation valueOf(
+            com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+          if (desc.getType() != getDescriptor()) {
+            throw new java.lang.IllegalArgumentException(
+              "EnumValueDescriptor is not for this type.");
+          }
+          return VALUES[desc.getIndex()];
+        }
+
+        private final int index;
+        private final int value;
+
+        private Relation(int index, int value) {
+          this.index = index;
+          this.value = value;
+        }
+
+        // @@protoc_insertion_point(enum_scope:Person.Relations.Relation)
+      }
+
+      private int bitField0_;
       // repeated .Person Person = 1;
       public static final int PERSON_FIELD_NUMBER = 1;
       private java.util.List<hu.unideb.inf.batfai.yanonymous8.YanoProto.Person> person_;
@@ -446,14 +669,35 @@ public final class YanoProto {
         return person_.get(index);
       }
 
+      // required .Person.Relations.Relation relation = 2;
+      public static final int RELATION_FIELD_NUMBER = 2;
+      private hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations.Relation relation_;
+      /**
+       * <code>required .Person.Relations.Relation relation = 2;</code>
+       */
+      public boolean hasRelation() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .Person.Relations.Relation relation = 2;</code>
+       */
+      public hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations.Relation getRelation() {
+        return relation_;
+      }
+
       private void initFields() {
         person_ = java.util.Collections.emptyList();
+        relation_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations.Relation.Relational;
       }
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
         if (isInitialized != -1) return isInitialized == 1;
 
+        if (!hasRelation()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
         for (int i = 0; i < getPersonCount(); i++) {
           if (!getPerson(i).isInitialized()) {
             memoizedIsInitialized = 0;
@@ -470,6 +714,9 @@ public final class YanoProto {
         for (int i = 0; i < person_.size(); i++) {
           output.writeMessage(1, person_.get(i));
         }
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          output.writeEnum(2, relation_.getNumber());
+        }
         getUnknownFields().writeTo(output);
       }
 
@@ -482,6 +729,10 @@ public final class YanoProto {
         for (int i = 0; i < person_.size(); i++) {
           size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(1, person_.get(i));
+        }
+        if (((bitField0_ & 0x00000001) == 0x00000001)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeEnumSize(2, relation_.getNumber());
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSerializedSize = size;
@@ -606,6 +857,8 @@ public final class YanoProto {
           } else {
             personBuilder_.clear();
           }
+          relation_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations.Relation.Relational;
+          bitField0_ = (bitField0_ & ~0x00000002);
           return this;
         }
 
@@ -633,6 +886,7 @@ public final class YanoProto {
         public hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations buildPartial() {
           hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations result = new hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations(this);
           int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
           if (personBuilder_ == null) {
             if (((bitField0_ & 0x00000001) == 0x00000001)) {
               person_ = java.util.Collections.unmodifiableList(person_);
@@ -642,6 +896,11 @@ public final class YanoProto {
           } else {
             result.person_ = personBuilder_.build();
           }
+          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+            to_bitField0_ |= 0x00000001;
+          }
+          result.relation_ = relation_;
+          result.bitField0_ = to_bitField0_;
           onBuilt();
           return result;
         }
@@ -683,11 +942,18 @@ public final class YanoProto {
               }
             }
           }
+          if (other.hasRelation()) {
+            setRelation(other.getRelation());
+          }
           this.mergeUnknownFields(other.getUnknownFields());
           return this;
         }
 
         public final boolean isInitialized() {
+          if (!hasRelation()) {
+            
+            return false;
+          }
           for (int i = 0; i < getPersonCount(); i++) {
             if (!getPerson(i).isInitialized()) {
               
@@ -956,6 +1222,42 @@ public final class YanoProto {
           return personBuilder_;
         }
 
+        // required .Person.Relations.Relation relation = 2;
+        private hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations.Relation relation_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations.Relation.Relational;
+        /**
+         * <code>required .Person.Relations.Relation relation = 2;</code>
+         */
+        public boolean hasRelation() {
+          return ((bitField0_ & 0x00000002) == 0x00000002);
+        }
+        /**
+         * <code>required .Person.Relations.Relation relation = 2;</code>
+         */
+        public hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations.Relation getRelation() {
+          return relation_;
+        }
+        /**
+         * <code>required .Person.Relations.Relation relation = 2;</code>
+         */
+        public Builder setRelation(hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations.Relation value) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          bitField0_ |= 0x00000002;
+          relation_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required .Person.Relations.Relation relation = 2;</code>
+         */
+        public Builder clearRelation() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          relation_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations.Relation.Relational;
+          onChanged();
+          return this;
+        }
+
         // @@protoc_insertion_point(builder_scope:Person.Relations)
       }
 
@@ -1057,7 +1359,7 @@ public final class YanoProto {
     private void initFields() {
       meId_ = 0;
       id_ = 0;
-      chosen_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Chosen.Valami1;
+      chosen_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Chosen.Android;
       relations_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
@@ -1244,7 +1546,7 @@ public final class YanoProto {
         bitField0_ = (bitField0_ & ~0x00000001);
         id_ = 0;
         bitField0_ = (bitField0_ & ~0x00000002);
-        chosen_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Chosen.Valami1;
+        chosen_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Chosen.Android;
         bitField0_ = (bitField0_ & ~0x00000004);
         if (relationsBuilder_ == null) {
           relations_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations.getDefaultInstance();
@@ -1468,7 +1770,7 @@ public final class YanoProto {
       }
 
       // required .Person.Chosen chosen = 3;
-      private hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Chosen chosen_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Chosen.Valami1;
+      private hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Chosen chosen_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Chosen.Android;
       /**
        * <code>required .Person.Chosen chosen = 3;</code>
        */
@@ -1498,7 +1800,7 @@ public final class YanoProto {
        */
       public Builder clearChosen() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        chosen_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Chosen.Valami1;
+        chosen_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Chosen.Android;
         onChanged();
         return this;
       }
@@ -2341,14 +2643,18 @@ public final class YanoProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\023protobuf/yano.proto\"\262\001\n\006Person\022\014\n\004meId" +
+      "\n\023protobuf/yano.proto\"\343\002\n\006Person\022\014\n\004meId" +
       "\030\001 \002(\005\022\n\n\002id\030\002 \001(\005\022\036\n\006chosen\030\003 \002(\0162\016.Per" +
       "son.Chosen\022$\n\trelations\030\004 \001(\0132\021.Person.R" +
-      "elations\032$\n\tRelations\022\027\n\006Person\030\001 \003(\0132\007." +
-      "Person\"\"\n\006Chosen\022\013\n\007Valami1\020\001\022\013\n\007Valami2" +
-      "\020\002\" \n\005Datas\022\027\n\006Person\030\001 \003(\0132\007.PersonB-\n " +
-      "hu.unideb.inf.batfai.yanonymous8B\tYanoPr" +
-      "oto"
+      "elations\032\277\001\n\tRelations\022\027\n\006Person\030\001 \003(\0132\007" +
+      ".Person\022,\n\010relation\030\002 \002(\0162\032.Person.Relat" +
+      "ions.Relation\"k\n\010Relation\022\016\n\nRelational\020" +
+      "\001\022\n\n\006Friend\020\002\022\016\n\nGirlfriend\020\003\022\r\n\tBoyfrie" +
+      "nd\020\004\022\n\n\006Father\020\005\022\n\n\006Mother\020\006\022\014\n\010Neighbor" +
+      "\020\007\"7\n\006Chosen\022\013\n\007Android\020\001\022\007\n\003iOS\020\002\022\013\n\007Wi" +
+      "ndows\020\003\022\n\n\006Others\020\004\" \n\005Datas\022\027\n\006Person\030\001",
+      " \003(\0132\007.PersonB-\n hu.unideb.inf.batfai.ya" +
+      "nonymous8B\tYanoProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2366,7 +2672,7 @@ public final class YanoProto {
           internal_static_Person_Relations_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_Person_Relations_descriptor,
-              new java.lang.String[] { "Person", });
+              new java.lang.String[] { "Person", "Relation", });
           internal_static_Datas_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_Datas_fieldAccessorTable = new

@@ -13,8 +13,8 @@ import java.sql.SQLException;
  */
 
 import yano_server.YanoProto;
-import yano_server.YanoProto.YanoData;
-import yano_server.YanoProto.YanoData.Chosen;
+import yano_server.YanoProto.Person;
+import yano_server.YanoProto.Person.Chosen;
 
 import yano_server.YanoProto.Datas;
 
@@ -23,7 +23,7 @@ import com.google.protobuf.*;
 public class Main {
 
     private void getData(Datas input){
-            for (YanoData person : input.getYanoDataList())
+            for (Person person : input.getPersonList())
             {
                 System.out.println("Sajat Azon: " + person.getMeId());
 
@@ -31,12 +31,17 @@ public class Main {
                     System.out.println("Kapcsolatom azon: " + person.getId());
 
                 switch (person.getChosen()) {
-                    case Valami1:
-                        System.out.println("Valami1");
+                    case Android:
+                        System.out.println("Android");
                         break;
-                    case Valami2:
-                        System.out.println("Valami2");
+                    case iOS:
+                        System.out.println("iOS");
                         break;
+                    case Windows:
+                        System.out.println("Windows Phone");
+                        break;
+                    case Others:
+                        System.out.println("Others");
                 }
 
             }
@@ -89,7 +94,7 @@ public class Main {
 
                     System.out.println(datas.toString());
 
-                    System.out.println( i++ +""+ socket.getInetAddress()); // csatlakozófél ip-je
+                    System.out.println( i++ +" "+ socket.getInetAddress()); // csatlakozófél ip-je
                 } finally {
                     socket.close();
                 }

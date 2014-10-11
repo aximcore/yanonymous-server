@@ -7,14 +7,28 @@ message Person{
     required int32 meId = 1;    // Saját azonosítóm
     optional int32 id = 2;      // Akivel kapcsolatba annak az azonosítója
     enum Chosen {               // Kit/mit választott
-        Valami1 = 1;
-        Valami2 = 2;
+        Android = 1;
+        iOS = 2;
+        Windows = 3;
+        Others = 4;
     }
 
     required Chosen chosen = 3;
 
     message Relations{
         repeated Person Person = 1;
+
+        enum Relation{
+            Relational = 1;     // rokoni
+            Friend = 2;         // barát
+            Girlfriend = 3;     // csajom
+            Boyfriend = 4;      // pasim
+            Father = 5;         // apa
+            Mother = 6;         // anya
+            Neighbor = 7;       // szomszéd
+        }
+
+        required Relation relation = 2;
     }
 
     optional Relations relations= 4;
