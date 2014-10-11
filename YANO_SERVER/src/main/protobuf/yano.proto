@@ -1,0 +1,25 @@
+
+
+option java_package = "yano_server";
+option java_outer_classname = "YanoProto";
+
+message YanoData{
+    required int32 meId = 1;    // Saját azonosítóm
+    optional int32 id = 2;      // Akivel kapcsolatba annak az azonosítója
+    enum Chosen {               // Kit/mit választott
+        Valami1 = 1;
+        Valami2 = 2;
+    }
+
+    required Chosen chosen = 3;
+
+    message Relations{
+        repeated YanoData yanodata = 1;
+    }
+
+    optional Relations relations= 4;
+}
+
+message Datas{
+    repeated YanoData yanoData = 1;
+}

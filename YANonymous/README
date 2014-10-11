@@ -1,0 +1,20 @@
+YANonymous Construct: http://progpater.blog.hu/9999/12/31/yanonymous_yana_anonymous_you_are_not_anonymous
+
+ADT Bundle letöltése: http://developer.android.com/sdk/index.html 
+
+Minden ablakban, vagy egyszerűen a $HOME/.profile fájl végére (miután újra loginolni kell)
+
+$ export ANDROID_HOME=$HOME/adt-bundle-linux-x86_64-20130522/sdk
+$ export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+Megfelelő Maven életciklusok futtatása:
+
+$ mvn clean install (a pom.xml-el egy szinten kiadva)
+
+Emulátor indítása (másik ablakban)
+
+$ android avd
+
+Progi feltöltése az emulátorba (feltéve, hogy a pom.xml-el egy szinten állunk)
+
+$ adb install target/YANonymous-1.apk (vagy akár Maven életciklusként: mvn android:deploy)

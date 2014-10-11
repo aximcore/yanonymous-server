@@ -1,0 +1,4 @@
+Fordítási sorrend: 
+
+- mvn generate-sources
+- java fájlok fordítása
