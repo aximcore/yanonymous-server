@@ -44,7 +44,7 @@ package hu.unideb.inf.batfai.yanonymous8;
 public class LocalCommunityObject {
 
 	public float x, y;
-	public String name;
+	public String name,username;
 	public float distexy;
 
 	public LocalCommunityObject(String name) {
@@ -60,8 +60,9 @@ public class LocalCommunityObject {
 
 	}
 
-	public LocalCommunityObject(String name, float x, float y) {
+	public LocalCommunityObject(String username,String name, float x, float y) {
 
+        this.username = username;
 		this.name = name;
 		this.x = x;
 		this.y = y;

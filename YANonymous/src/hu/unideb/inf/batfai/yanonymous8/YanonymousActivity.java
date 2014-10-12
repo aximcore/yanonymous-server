@@ -41,7 +41,13 @@
  */
 package hu.unideb.inf.batfai.yanonymous8;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -57,37 +63,44 @@ public class YanonymousActivity extends android.app.Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        //Dialogs dia = new Dialogs();
     }
 
     //-----------------------------------------------------------------------------------------------------------
 
+    public View viewSend;
+
     public void SendData(View v){
-        new Thread(new SocketClient(YourWorldView.anonyms)).start();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        LayoutInflater inflater = this.getLayoutInflater();
+        viewSend = inflater.inflate(R.layout.user,null);
+
+        builder.setView(viewSend)
+                .setTitle("Saját adataim")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id){
+                        YourWorldView.anonyms.get(0).setUserName(((EditText)viewSend.findViewById(R.id.editText)).getText().toString());
+                        new Thread(new SocketClient(YourWorldView.anonyms,YourWorldView.relations)).start();
+
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int id){
+
+                        //LoginDialogFragment.this.getDialog().cancel();
+                    }
+                });
+         builder.create().show();
     }
 
-    public void start(List<Anonymous> a){
-        try {
-            ServerSocket serverSocket = new ServerSocket(9090);
-            Socket client = new Socket("192.168.1.100", 9090);
-
-            PrintWriter out = new PrintWriter(client.getOutputStream(), true);
-
-            //for (Anonymous i : a) {
-            // és egy azonosító  megírása
-            out.println(a.get(0).name);
-            //out.println(a.get(0).x);
-            //out.println(a.get(0).y);
-
-                //System.out.println(i.name);
-            //}
-        } catch (IOException io){
-            WriteError(io.toString());
-        }
-    }
 
     public void WriteError(String Error){
         Toast.makeText(this, "Következő hiba lépet fel " + Error, Toast.LENGTH_SHORT).show();
-    };
+    }
 
     //-----------------------------------------------------------------------------------------------------------
 }

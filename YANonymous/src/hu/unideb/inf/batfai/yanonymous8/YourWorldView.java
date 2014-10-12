@@ -41,8 +41,17 @@
  */
 package hu.unideb.inf.batfai.yanonymous8;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.util.EventLog;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class YourWorldView extends android.view.View {
@@ -67,9 +76,11 @@ public class YourWorldView extends android.view.View {
 	private static int textSize = 44;
 	private static android.graphics.Paint edgeTextPaint = new android.graphics.Paint();
 
+    private Context context;
+
 	public YourWorldView(android.content.Context context) {
 		super(context);
-
+        this.context = context;
 		cinit();
 
 	}
@@ -103,7 +114,7 @@ public class YourWorldView extends android.view.View {
 		if (first) {
 
 			first = false;
-			anonyms.add(new Anonymous(true, "Android", gx + width / 2, gy
+			anonyms.add(new Anonymous(true, gx + width / 2, gy
 					+ height / 2));
 
 			int resId = getResources().getIdentifier("ic_launcher", "drawable",
@@ -118,7 +129,7 @@ public class YourWorldView extends android.view.View {
 		pagerBgrndPaint.setColor(android.graphics.Color.rgb(0x77, 0xcc, 0xff));
 		pagerBgrndPaint.setStyle(android.graphics.Paint.Style.FILL_AND_STROKE);
 		pagerBgrndPaint.setAntiAlias(true);
-		
+
 		bgrndPaint.setColor(android.graphics.Color.rgb(0x33, 0x66, 0xff));
 		bgrndPaint.setStyle(android.graphics.Paint.Style.FILL_AND_STROKE);
 		bgrndPaint.setAntiAlias(true);
@@ -205,11 +216,15 @@ public class YourWorldView extends android.view.View {
 	protected float mx, my;
 	protected float sgx, sgy;
 
+    public float x,y;
+    public Anonymous Temp;
+    public View viewDialog;
+
 	@Override
 	public boolean onTouchEvent(android.view.MotionEvent event) {
 
-		float x = event.getX();
-		float y = event.getY();
+		 x = event.getX();
+		 y = event.getY();
 
 		if (event.getAction() == android.view.MotionEvent.ACTION_DOWN) {
 
@@ -276,15 +291,45 @@ public class YourWorldView extends android.view.View {
 
 					}
 
-				} else {
+				} else {                                                        // ha elhúztam a megfelelőhelyre
 
-					if (d(selectedA.x, selectedA.y, gx + x, gy + y) > 4 * size
+					if (d(selectedA.x, selectedA.y, gx + x, gy + y) > 4 * size  // create pont
 							* size) {
 
-						Anonymous a = new Anonymous("Android", gx + x, gy + y);
-						anonyms.add(a);
 
-						relations.add(new Relation(selectedA, a));
+                        Temp = new Anonymous("Android",gx + x, gy + y);
+
+                        // dialog
+                        AlertDialog.Builder builder = new AlertDialog.Builder(super.getContext());
+
+                        LayoutInflater inflater = (LayoutInflater) super.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+                        viewDialog = inflater.inflate(R.layout.user,null);
+
+                        builder.setView(viewDialog)
+                                .setTitle("Ismerős adatai")
+                                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                    EditText editText = (EditText) viewDialog.findViewById(R.id.editText);
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        String username = editText.getText().toString();
+                                        Temp.setUserName(username);
+                                    }
+                                })
+                                .setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int id){
+
+                                        //LoginDialogFragment.this.getDialog().cancel();
+                                    }
+                                });
+                        builder.create().show();
+
+                        //Toast.makeText(super.getContext(), "Következő hiba lépet fel ", Toast.LENGTH_SHORT).show();
+
+                        anonyms.add(Temp);
+                        relations.add(new Relation(selectedA, Temp));
+
 
 					}
 				}
@@ -371,11 +416,15 @@ public class YourWorldView extends android.view.View {
 					-gy + a.y
 							- ((textPaint.descent() + textPaint.ascent()) / 2),
 					textPaint);
-			canvas.drawText(a.name, -gx + a.x,
+			canvas.drawText(a.name, -gx + a.x,                                      // mit választott kiírása
 					-gy + a.y
 							- ((textPaint.descent() + textPaint.ascent()) / 2),
 					textBrdPaint);
 
+            canvas.drawText(a.username, -gx + a.x,                                  // felhasználónév
+                    -gy + a.y
+                            - ((textPaint.descent() + textPaint.ascent()) / 2) + 40,
+                    textBrdPaint);
 		}
 		
 		canvas.clipRect(width - width/4, height - height/6, width-5, height-5);

@@ -19,13 +19,15 @@ import hu.unideb.inf.batfai.yanonymous8.YanoProto.Datas.Builder;
  * Created by aximcore on 2014.10.04..
  */
 public class SocketClient implements Runnable {
-    List<Anonymous> a;
+    List<Anonymous> a; List<Relation> b; int i = 0;
 
-    public SocketClient( List<Anonymous> inData ) {
+    public SocketClient( List<Anonymous> inData, List<Relation> relation ) {
+        b = relation;
         a = inData;
     }
 
     private Person readData(Anonymous a){
+
         Person.Builder person = Person.newBuilder();
 
         if ( a.name == "Android")
@@ -37,7 +39,9 @@ public class SocketClient implements Runnable {
         else
             person.setChosen(Person.Chosen.Others);
 
-        person.setMeId(1);
+        person.setUsername(a.username);
+        person.setFriend(b.get(i).nodeB.username);
+        i++;
 
         return person.build();
     }

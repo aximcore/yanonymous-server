@@ -52,9 +52,29 @@ public class Anonymous extends LocalCommunityObject implements
 
     }
 
+    public Anonymous(float x, float y){
+        this(false,"Andorid", x, y);
+    }
+
     public Anonymous(boolean me, String name, float x, float y) {
 
-    	super(name, x, y);
+    	super("felhasznalonev",name, x, y);
+
+        this.me = me;
+
+    }
+
+    public Anonymous(String username, String name, float x, float y) {
+
+        super(username,name, x, y);
+
+        this.me = me;
+
+    }
+
+    public Anonymous(boolean me, float x, float y) {
+
+        super("felhasznalonev","Android", x, y);
 
         this.me = me;
 
@@ -65,6 +85,10 @@ public class Anonymous extends LocalCommunityObject implements
 
         return PoliticalAffinity.partyColors.get(name);
 
+    }
+
+    public void setUserName(String username){
+        this.username = username;
     }
 
     @Override

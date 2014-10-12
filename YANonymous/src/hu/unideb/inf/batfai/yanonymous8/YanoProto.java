@@ -11,41 +11,59 @@ public final class YanoProto {
   public interface PersonOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 meId = 1;
+    // required string username = 1;
     /**
-     * <code>required int32 meId = 1;</code>
+     * <code>required string username = 1;</code>
      *
      * <pre>
      * Saját azonosítóm
      * </pre>
      */
-    boolean hasMeId();
+    boolean hasUsername();
     /**
-     * <code>required int32 meId = 1;</code>
+     * <code>required string username = 1;</code>
      *
      * <pre>
      * Saját azonosítóm
      * </pre>
      */
-    int getMeId();
+    java.lang.String getUsername();
+    /**
+     * <code>required string username = 1;</code>
+     *
+     * <pre>
+     * Saját azonosítóm
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getUsernameBytes();
 
-    // optional int32 id = 2;
+    // optional string Friend = 2;
     /**
-     * <code>optional int32 id = 2;</code>
+     * <code>optional string Friend = 2;</code>
      *
      * <pre>
      * Akivel kapcsolatba annak az azonosítója
      * </pre>
      */
-    boolean hasId();
+    boolean hasFriend();
     /**
-     * <code>optional int32 id = 2;</code>
+     * <code>optional string Friend = 2;</code>
      *
      * <pre>
      * Akivel kapcsolatba annak az azonosítója
      * </pre>
      */
-    int getId();
+    java.lang.String getFriend();
+    /**
+     * <code>optional string Friend = 2;</code>
+     *
+     * <pre>
+     * Akivel kapcsolatba annak az azonosítója
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getFriendBytes();
 
     // required .Person.Chosen chosen = 3;
     /**
@@ -122,14 +140,14 @@ public final class YanoProto {
               }
               break;
             }
-            case 8: {
+            case 10: {
               bitField0_ |= 0x00000001;
-              meId_ = input.readInt32();
+              username_ = input.readBytes();
               break;
             }
-            case 16: {
+            case 18: {
               bitField0_ |= 0x00000002;
-              id_ = input.readInt32();
+              friend_ = input.readBytes();
               break;
             }
             case 24: {
@@ -1270,52 +1288,114 @@ public final class YanoProto {
     }
 
     private int bitField0_;
-    // required int32 meId = 1;
-    public static final int MEID_FIELD_NUMBER = 1;
-    private int meId_;
+    // required string username = 1;
+    public static final int USERNAME_FIELD_NUMBER = 1;
+    private java.lang.Object username_;
     /**
-     * <code>required int32 meId = 1;</code>
+     * <code>required string username = 1;</code>
      *
      * <pre>
      * Saját azonosítóm
      * </pre>
      */
-    public boolean hasMeId() {
+    public boolean hasUsername() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 meId = 1;</code>
+     * <code>required string username = 1;</code>
      *
      * <pre>
      * Saját azonosítóm
      * </pre>
      */
-    public int getMeId() {
-      return meId_;
+    public java.lang.String getUsername() {
+      java.lang.Object ref = username_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          username_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string username = 1;</code>
+     *
+     * <pre>
+     * Saját azonosítóm
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getUsernameBytes() {
+      java.lang.Object ref = username_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        username_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
-    // optional int32 id = 2;
-    public static final int ID_FIELD_NUMBER = 2;
-    private int id_;
+    // optional string Friend = 2;
+    public static final int FRIEND_FIELD_NUMBER = 2;
+    private java.lang.Object friend_;
     /**
-     * <code>optional int32 id = 2;</code>
+     * <code>optional string Friend = 2;</code>
      *
      * <pre>
      * Akivel kapcsolatba annak az azonosítója
      * </pre>
      */
-    public boolean hasId() {
+    public boolean hasFriend() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional int32 id = 2;</code>
+     * <code>optional string Friend = 2;</code>
      *
      * <pre>
      * Akivel kapcsolatba annak az azonosítója
      * </pre>
      */
-    public int getId() {
-      return id_;
+    public java.lang.String getFriend() {
+      java.lang.Object ref = friend_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          friend_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string Friend = 2;</code>
+     *
+     * <pre>
+     * Akivel kapcsolatba annak az azonosítója
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getFriendBytes() {
+      java.lang.Object ref = friend_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        friend_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     // required .Person.Chosen chosen = 3;
@@ -1357,8 +1437,8 @@ public final class YanoProto {
     }
 
     private void initFields() {
-      meId_ = 0;
-      id_ = 0;
+      username_ = "";
+      friend_ = "";
       chosen_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Chosen.Android;
       relations_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Relations.getDefaultInstance();
     }
@@ -1367,7 +1447,7 @@ public final class YanoProto {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasMeId()) {
+      if (!hasUsername()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1389,10 +1469,10 @@ public final class YanoProto {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, meId_);
+        output.writeBytes(1, getUsernameBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, id_);
+        output.writeBytes(2, getFriendBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeEnum(3, chosen_.getNumber());
@@ -1411,11 +1491,11 @@ public final class YanoProto {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, meId_);
+          .computeBytesSize(1, getUsernameBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, id_);
+          .computeBytesSize(2, getFriendBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1542,9 +1622,9 @@ public final class YanoProto {
 
       public Builder clear() {
         super.clear();
-        meId_ = 0;
+        username_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        id_ = 0;
+        friend_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
         chosen_ = hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.Chosen.Android;
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -1585,11 +1665,11 @@ public final class YanoProto {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.meId_ = meId_;
+        result.username_ = username_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.id_ = id_;
+        result.friend_ = friend_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
@@ -1618,11 +1698,15 @@ public final class YanoProto {
 
       public Builder mergeFrom(hu.unideb.inf.batfai.yanonymous8.YanoProto.Person other) {
         if (other == hu.unideb.inf.batfai.yanonymous8.YanoProto.Person.getDefaultInstance()) return this;
-        if (other.hasMeId()) {
-          setMeId(other.getMeId());
+        if (other.hasUsername()) {
+          bitField0_ |= 0x00000001;
+          username_ = other.username_;
+          onChanged();
         }
-        if (other.hasId()) {
-          setId(other.getId());
+        if (other.hasFriend()) {
+          bitField0_ |= 0x00000002;
+          friend_ = other.friend_;
+          onChanged();
         }
         if (other.hasChosen()) {
           setChosen(other.getChosen());
@@ -1635,7 +1719,7 @@ public final class YanoProto {
       }
 
       public final boolean isInitialized() {
-        if (!hasMeId()) {
+        if (!hasUsername()) {
           
           return false;
         }
@@ -1671,100 +1755,198 @@ public final class YanoProto {
       }
       private int bitField0_;
 
-      // required int32 meId = 1;
-      private int meId_ ;
+      // required string username = 1;
+      private java.lang.Object username_ = "";
       /**
-       * <code>required int32 meId = 1;</code>
+       * <code>required string username = 1;</code>
        *
        * <pre>
        * Saját azonosítóm
        * </pre>
        */
-      public boolean hasMeId() {
+      public boolean hasUsername() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 meId = 1;</code>
+       * <code>required string username = 1;</code>
        *
        * <pre>
        * Saját azonosítóm
        * </pre>
        */
-      public int getMeId() {
-        return meId_;
+      public java.lang.String getUsername() {
+        java.lang.Object ref = username_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          username_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 meId = 1;</code>
+       * <code>required string username = 1;</code>
        *
        * <pre>
        * Saját azonosítóm
        * </pre>
        */
-      public Builder setMeId(int value) {
-        bitField0_ |= 0x00000001;
-        meId_ = value;
+      public com.google.protobuf.ByteString
+          getUsernameBytes() {
+        java.lang.Object ref = username_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          username_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string username = 1;</code>
+       *
+       * <pre>
+       * Saját azonosítóm
+       * </pre>
+       */
+      public Builder setUsername(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        username_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 meId = 1;</code>
+       * <code>required string username = 1;</code>
        *
        * <pre>
        * Saját azonosítóm
        * </pre>
        */
-      public Builder clearMeId() {
+      public Builder clearUsername() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        meId_ = 0;
+        username_ = getDefaultInstance().getUsername();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string username = 1;</code>
+       *
+       * <pre>
+       * Saját azonosítóm
+       * </pre>
+       */
+      public Builder setUsernameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        username_ = value;
         onChanged();
         return this;
       }
 
-      // optional int32 id = 2;
-      private int id_ ;
+      // optional string Friend = 2;
+      private java.lang.Object friend_ = "";
       /**
-       * <code>optional int32 id = 2;</code>
+       * <code>optional string Friend = 2;</code>
        *
        * <pre>
        * Akivel kapcsolatba annak az azonosítója
        * </pre>
        */
-      public boolean hasId() {
+      public boolean hasFriend() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional int32 id = 2;</code>
+       * <code>optional string Friend = 2;</code>
        *
        * <pre>
        * Akivel kapcsolatba annak az azonosítója
        * </pre>
        */
-      public int getId() {
-        return id_;
+      public java.lang.String getFriend() {
+        java.lang.Object ref = friend_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          friend_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>optional int32 id = 2;</code>
+       * <code>optional string Friend = 2;</code>
        *
        * <pre>
        * Akivel kapcsolatba annak az azonosítója
        * </pre>
        */
-      public Builder setId(int value) {
-        bitField0_ |= 0x00000002;
-        id_ = value;
+      public com.google.protobuf.ByteString
+          getFriendBytes() {
+        java.lang.Object ref = friend_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          friend_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string Friend = 2;</code>
+       *
+       * <pre>
+       * Akivel kapcsolatba annak az azonosítója
+       * </pre>
+       */
+      public Builder setFriend(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        friend_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 id = 2;</code>
+       * <code>optional string Friend = 2;</code>
        *
        * <pre>
        * Akivel kapcsolatba annak az azonosítója
        * </pre>
        */
-      public Builder clearId() {
+      public Builder clearFriend() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        id_ = 0;
+        friend_ = getDefaultInstance().getFriend();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string Friend = 2;</code>
+       *
+       * <pre>
+       * Akivel kapcsolatba annak az azonosítója
+       * </pre>
+       */
+      public Builder setFriendBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        friend_ = value;
         onChanged();
         return this;
       }
@@ -2643,18 +2825,18 @@ public final class YanoProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\023protobuf/yano.proto\"\343\002\n\006Person\022\014\n\004meId" +
-      "\030\001 \002(\005\022\n\n\002id\030\002 \001(\005\022\036\n\006chosen\030\003 \002(\0162\016.Per" +
-      "son.Chosen\022$\n\trelations\030\004 \001(\0132\021.Person.R" +
-      "elations\032\277\001\n\tRelations\022\027\n\006Person\030\001 \003(\0132\007" +
-      ".Person\022,\n\010relation\030\002 \002(\0162\032.Person.Relat" +
-      "ions.Relation\"k\n\010Relation\022\016\n\nRelational\020" +
-      "\001\022\n\n\006Friend\020\002\022\016\n\nGirlfriend\020\003\022\r\n\tBoyfrie" +
-      "nd\020\004\022\n\n\006Father\020\005\022\n\n\006Mother\020\006\022\014\n\010Neighbor" +
-      "\020\007\"7\n\006Chosen\022\013\n\007Android\020\001\022\007\n\003iOS\020\002\022\013\n\007Wi" +
-      "ndows\020\003\022\n\n\006Others\020\004\" \n\005Datas\022\027\n\006Person\030\001",
-      " \003(\0132\007.PersonB-\n hu.unideb.inf.batfai.ya" +
-      "nonymous8B\tYanoProto"
+      "\n\023protobuf/yano.proto\"\353\002\n\006Person\022\020\n\010user" +
+      "name\030\001 \002(\t\022\016\n\006Friend\030\002 \001(\t\022\036\n\006chosen\030\003 \002" +
+      "(\0162\016.Person.Chosen\022$\n\trelations\030\004 \001(\0132\021." +
+      "Person.Relations\032\277\001\n\tRelations\022\027\n\006Person" +
+      "\030\001 \003(\0132\007.Person\022,\n\010relation\030\002 \002(\0162\032.Pers" +
+      "on.Relations.Relation\"k\n\010Relation\022\016\n\nRel" +
+      "ational\020\001\022\n\n\006Friend\020\002\022\016\n\nGirlfriend\020\003\022\r\n" +
+      "\tBoyfriend\020\004\022\n\n\006Father\020\005\022\n\n\006Mother\020\006\022\014\n\010" +
+      "Neighbor\020\007\"7\n\006Chosen\022\013\n\007Android\020\001\022\007\n\003iOS" +
+      "\020\002\022\013\n\007Windows\020\003\022\n\n\006Others\020\004\" \n\005Datas\022\027\n\006",
+      "Person\030\001 \003(\0132\007.PersonB-\n hu.unideb.inf.b" +
+      "atfai.yanonymous8B\tYanoProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2666,7 +2848,7 @@ public final class YanoProto {
           internal_static_Person_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_Person_descriptor,
-              new java.lang.String[] { "MeId", "Id", "Chosen", "Relations", });
+              new java.lang.String[] { "Username", "Friend", "Chosen", "Relations", });
           internal_static_Person_Relations_descriptor =
             internal_static_Person_descriptor.getNestedTypes().get(0);
           internal_static_Person_Relations_fieldAccessorTable = new

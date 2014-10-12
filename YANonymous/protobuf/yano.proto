@@ -4,8 +4,8 @@ option java_package = "hu.unideb.inf.batfai.yanonymous8";
 option java_outer_classname = "YanoProto";
 
 message Person{
-    required int32 meId = 1;    // Saját azonosítóm
-    optional int32 id = 2;      // Akivel kapcsolatba annak az azonosítója
+    required string username = 1;    // Saját azonosítóm
+    optional string Friend = 2;      // Akivel kapcsolatba annak az azonosítója
     enum Chosen {               // Kit/mit választott
         Android = 1;
         iOS = 2;
