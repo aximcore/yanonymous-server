@@ -21,28 +21,68 @@ import yano_server.YanoProto.Datas;
 import com.google.protobuf.*;
 
 public class Main {
+    static Mysql mysql;
+    String chosen,relation;
 
     private void getData(Datas input){
             for (Person person : input.getPersonList())
             {
-                System.out.println("Sajat Azon: " + person.getMeId());
+                //System.out.println("Sajat Azon: " + person.getUsername());
 
-                if(person.hasId())
-                    System.out.println("Kapcsolatom azon: " + person.getId());
+                //if(person.hasMyFriend())
+                //    System.out.println("Kapcsolatom azon: " + person.getMyFriend());
 
                 switch (person.getChosen()) {
                     case Android:
-                        System.out.println("Android");
+                        chosen = "Android";
+                        //System.out.println("Android");
                         break;
                     case iOS:
-                        System.out.println("iOS");
+                        chosen = "iOS";
+                        //System.out.println("iOS");
                         break;
                     case Windows:
-                        System.out.println("Windows Phone");
+                        chosen = "Windows Phone";
+                        //System.out.println("Windows Phone");
                         break;
                     case Others:
-                        System.out.println("Others");
+                        chosen = "Others";
+                        //System.out.println("Others");
                 }
+
+                switch (person.getRelation()){
+                    case Relationship:
+                        relation = "Relationship";
+                        //System.out.println("Relationship");
+                        break;
+                    case Father:
+                        relation = "Father";
+                        //System.out.println("Father");
+                        break;
+                    case Mother:
+                        relation = "Mother";
+                        //System.out.println("Mother");
+                        break;
+                    case Girlfriend:
+                        relation = "Girlfriend";
+                        //System.out.println("Girlfriend");
+                        break;
+                    case Boyfriend:
+                        relation = "Boyfriend";
+                        //System.out.println("Boyfriend");
+                        break;
+                    case Neighbor:
+                        relation = "Neighbor";
+                        //System.out.println("Neighbor");
+                        break;
+                    case Testver:
+                        relation = "Testvér";
+                        //System.out.println("Testvér");
+                }
+
+                mysql.Exec("INSERT INTO users (username,chosen) values ('"+person.getUsername()+"','"+chosen+"');");
+                mysql.Exec("INSERT INTO relation (username,friend,relationship) values ('"+person.getUsername()+"'," +
+                        "'"+person.getMyFriend()+"','"+relation+"');");
 
             }
     }
@@ -51,15 +91,10 @@ public class Main {
     public static void main(String[] args) throws IOException, Exception{
 
         Main main = new Main();
+        mysql = new Mysql();
         int i = 0;
 
 
-        try {
-            Mysql mysql = new Mysql();
-        } catch (SQLException ex){
-            System.out.println(ex.toString());
-            System.exit(-1);
-        }
 
 
         ServerSocket listener = new ServerSocket(9090);
@@ -92,7 +127,7 @@ public class Main {
                     Datas datas = Datas.parseFrom(socket.getInputStream());
                     main.getData(datas);
 
-                    System.out.println(datas.toString());
+                    //System.out.println(datas.toString());
 
                     System.out.println( i++ +" "+ socket.getInetAddress()); // csatlakozófél ip-je
                 } finally {

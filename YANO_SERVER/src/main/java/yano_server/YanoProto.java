@@ -11,41 +11,59 @@ public final class YanoProto {
   public interface PersonOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 meId = 1;
+    // required string username = 1;
     /**
-     * <code>required int32 meId = 1;</code>
+     * <code>required string username = 1;</code>
      *
      * <pre>
      * Saját azonosítóm
      * </pre>
      */
-    boolean hasMeId();
+    boolean hasUsername();
     /**
-     * <code>required int32 meId = 1;</code>
+     * <code>required string username = 1;</code>
      *
      * <pre>
      * Saját azonosítóm
      * </pre>
      */
-    int getMeId();
+    java.lang.String getUsername();
+    /**
+     * <code>required string username = 1;</code>
+     *
+     * <pre>
+     * Saját azonosítóm
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getUsernameBytes();
 
-    // optional int32 id = 2;
+    // optional string myFriend = 2;
     /**
-     * <code>optional int32 id = 2;</code>
+     * <code>optional string myFriend = 2;</code>
      *
      * <pre>
      * Akivel kapcsolatba annak az azonosítója
      * </pre>
      */
-    boolean hasId();
+    boolean hasMyFriend();
     /**
-     * <code>optional int32 id = 2;</code>
+     * <code>optional string myFriend = 2;</code>
      *
      * <pre>
      * Akivel kapcsolatba annak az azonosítója
      * </pre>
      */
-    int getId();
+    java.lang.String getMyFriend();
+    /**
+     * <code>optional string myFriend = 2;</code>
+     *
+     * <pre>
+     * Akivel kapcsolatba annak az azonosítója
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getMyFriendBytes();
 
     // required .Person.Chosen chosen = 3;
     /**
@@ -57,19 +75,15 @@ public final class YanoProto {
      */
     yano_server.YanoProto.Person.Chosen getChosen();
 
-    // optional .Person.Relations relations = 4;
+    // optional .Person.Relation relation = 4;
     /**
-     * <code>optional .Person.Relations relations = 4;</code>
+     * <code>optional .Person.Relation relation = 4;</code>
      */
-    boolean hasRelations();
+    boolean hasRelation();
     /**
-     * <code>optional .Person.Relations relations = 4;</code>
+     * <code>optional .Person.Relation relation = 4;</code>
      */
-    yano_server.YanoProto.Person.Relations getRelations();
-    /**
-     * <code>optional .Person.Relations relations = 4;</code>
-     */
-    yano_server.YanoProto.Person.RelationsOrBuilder getRelationsOrBuilder();
+    yano_server.YanoProto.Person.Relation getRelation();
   }
   /**
    * Protobuf type {@code Person}
@@ -122,14 +136,14 @@ public final class YanoProto {
               }
               break;
             }
-            case 8: {
+            case 10: {
               bitField0_ |= 0x00000001;
-              meId_ = input.readInt32();
+              username_ = input.readBytes();
               break;
             }
-            case 16: {
+            case 18: {
               bitField0_ |= 0x00000002;
-              id_ = input.readInt32();
+              myFriend_ = input.readBytes();
               break;
             }
             case 24: {
@@ -143,17 +157,15 @@ public final class YanoProto {
               }
               break;
             }
-            case 34: {
-              yano_server.YanoProto.Person.Relations.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
-                subBuilder = relations_.toBuilder();
+            case 32: {
+              int rawValue = input.readEnum();
+              yano_server.YanoProto.Person.Relation value = yano_server.YanoProto.Person.Relation.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(4, rawValue);
+              } else {
+                bitField0_ |= 0x00000008;
+                relation_ = value;
               }
-              relations_ = input.readMessage(yano_server.YanoProto.Person.Relations.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(relations_);
-                relations_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000008;
               break;
             }
           }
@@ -299,1023 +311,307 @@ public final class YanoProto {
       // @@protoc_insertion_point(enum_scope:Person.Chosen)
     }
 
-    public interface RelationsOrBuilder
-        extends com.google.protobuf.MessageOrBuilder {
-
-      // repeated .Person Person = 1;
-      /**
-       * <code>repeated .Person Person = 1;</code>
-       */
-      java.util.List<yano_server.YanoProto.Person> 
-          getPersonList();
-      /**
-       * <code>repeated .Person Person = 1;</code>
-       */
-      yano_server.YanoProto.Person getPerson(int index);
-      /**
-       * <code>repeated .Person Person = 1;</code>
-       */
-      int getPersonCount();
-      /**
-       * <code>repeated .Person Person = 1;</code>
-       */
-      java.util.List<? extends yano_server.YanoProto.PersonOrBuilder> 
-          getPersonOrBuilderList();
-      /**
-       * <code>repeated .Person Person = 1;</code>
-       */
-      yano_server.YanoProto.PersonOrBuilder getPersonOrBuilder(
-          int index);
-
-      // required .Person.Relations.Relation relation = 2;
-      /**
-       * <code>required .Person.Relations.Relation relation = 2;</code>
-       */
-      boolean hasRelation();
-      /**
-       * <code>required .Person.Relations.Relation relation = 2;</code>
-       */
-      yano_server.YanoProto.Person.Relations.Relation getRelation();
-    }
     /**
-     * Protobuf type {@code Person.Relations}
+     * Protobuf enum {@code Person.Relation}
      */
-    public static final class Relations extends
-        com.google.protobuf.GeneratedMessage
-        implements RelationsOrBuilder {
-      // Use Relations.newBuilder() to construct.
-      private Relations(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-        super(builder);
-        this.unknownFields = builder.getUnknownFields();
-      }
-      private Relations(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    public enum Relation
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>Relationship = 1;</code>
+       *
+       * <pre>
+       * rokoni
+       * </pre>
+       */
+      Relationship(0, 1),
+      /**
+       * <code>Friend = 2;</code>
+       *
+       * <pre>
+       * barát
+       * </pre>
+       */
+      Friend(1, 2),
+      /**
+       * <code>Girlfriend = 3;</code>
+       *
+       * <pre>
+       * csajom
+       * </pre>
+       */
+      Girlfriend(2, 3),
+      /**
+       * <code>Boyfriend = 4;</code>
+       *
+       * <pre>
+       * pasim
+       * </pre>
+       */
+      Boyfriend(3, 4),
+      /**
+       * <code>Father = 5;</code>
+       *
+       * <pre>
+       * apa
+       * </pre>
+       */
+      Father(4, 5),
+      /**
+       * <code>Mother = 6;</code>
+       *
+       * <pre>
+       * anya
+       * </pre>
+       */
+      Mother(5, 6),
+      /**
+       * <code>Neighbor = 7;</code>
+       *
+       * <pre>
+       * szomszéd
+       * </pre>
+       */
+      Neighbor(6, 7),
+      /**
+       * <code>Testver = 8;</code>
+       */
+      Testver(7, 8),
+      ;
 
-      private static final Relations defaultInstance;
-      public static Relations getDefaultInstance() {
-        return defaultInstance;
-      }
+      /**
+       * <code>Relationship = 1;</code>
+       *
+       * <pre>
+       * rokoni
+       * </pre>
+       */
+      public static final int Relationship_VALUE = 1;
+      /**
+       * <code>Friend = 2;</code>
+       *
+       * <pre>
+       * barát
+       * </pre>
+       */
+      public static final int Friend_VALUE = 2;
+      /**
+       * <code>Girlfriend = 3;</code>
+       *
+       * <pre>
+       * csajom
+       * </pre>
+       */
+      public static final int Girlfriend_VALUE = 3;
+      /**
+       * <code>Boyfriend = 4;</code>
+       *
+       * <pre>
+       * pasim
+       * </pre>
+       */
+      public static final int Boyfriend_VALUE = 4;
+      /**
+       * <code>Father = 5;</code>
+       *
+       * <pre>
+       * apa
+       * </pre>
+       */
+      public static final int Father_VALUE = 5;
+      /**
+       * <code>Mother = 6;</code>
+       *
+       * <pre>
+       * anya
+       * </pre>
+       */
+      public static final int Mother_VALUE = 6;
+      /**
+       * <code>Neighbor = 7;</code>
+       *
+       * <pre>
+       * szomszéd
+       * </pre>
+       */
+      public static final int Neighbor_VALUE = 7;
+      /**
+       * <code>Testver = 8;</code>
+       */
+      public static final int Testver_VALUE = 8;
 
-      public Relations getDefaultInstanceForType() {
-        return defaultInstance;
-      }
 
-      private final com.google.protobuf.UnknownFieldSet unknownFields;
-      @java.lang.Override
-      public final com.google.protobuf.UnknownFieldSet
-          getUnknownFields() {
-        return this.unknownFields;
-      }
-      private Relations(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        initFields();
-        int mutable_bitField0_ = 0;
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-            com.google.protobuf.UnknownFieldSet.newBuilder();
-        try {
-          boolean done = false;
-          while (!done) {
-            int tag = input.readTag();
-            switch (tag) {
-              case 0:
-                done = true;
-                break;
-              default: {
-                if (!parseUnknownField(input, unknownFields,
-                                       extensionRegistry, tag)) {
-                  done = true;
-                }
-                break;
-              }
-              case 10: {
-                if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                  person_ = new java.util.ArrayList<yano_server.YanoProto.Person>();
-                  mutable_bitField0_ |= 0x00000001;
-                }
-                person_.add(input.readMessage(yano_server.YanoProto.Person.PARSER, extensionRegistry));
-                break;
-              }
-              case 16: {
-                int rawValue = input.readEnum();
-                yano_server.YanoProto.Person.Relations.Relation value = yano_server.YanoProto.Person.Relations.Relation.valueOf(rawValue);
-                if (value == null) {
-                  unknownFields.mergeVarintField(2, rawValue);
-                } else {
-                  bitField0_ |= 0x00000001;
-                  relation_ = value;
-                }
-                break;
-              }
-            }
-          }
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          throw e.setUnfinishedMessage(this);
-        } catch (java.io.IOException e) {
-          throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(this);
-        } finally {
-          if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-            person_ = java.util.Collections.unmodifiableList(person_);
-          }
-          this.unknownFields = unknownFields.build();
-          makeExtensionsImmutable();
+      public final int getNumber() { return value; }
+
+      public static Relation valueOf(int value) {
+        switch (value) {
+          case 1: return Relationship;
+          case 2: return Friend;
+          case 3: return Girlfriend;
+          case 4: return Boyfriend;
+          case 5: return Father;
+          case 6: return Mother;
+          case 7: return Neighbor;
+          case 8: return Testver;
+          default: return null;
         }
       }
-      public static final com.google.protobuf.Descriptors.Descriptor
+
+      public static com.google.protobuf.Internal.EnumLiteMap<Relation>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static com.google.protobuf.Internal.EnumLiteMap<Relation>
+          internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<Relation>() {
+              public Relation findValueByNumber(int number) {
+                return Relation.valueOf(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(index);
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptor() {
-        return yano_server.YanoProto.internal_static_Person_Relations_descriptor;
+        return yano_server.YanoProto.Person.getDescriptor().getEnumTypes().get(1);
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return yano_server.YanoProto.internal_static_Person_Relations_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                yano_server.YanoProto.Person.Relations.class, yano_server.YanoProto.Person.Relations.Builder.class);
+      private static final Relation[] VALUES = values();
+
+      public static Relation valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
       }
 
-      public static com.google.protobuf.Parser<Relations> PARSER =
-          new com.google.protobuf.AbstractParser<Relations>() {
-        public Relations parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new Relations(input, extensionRegistry);
-        }
-      };
+      private final int index;
+      private final int value;
 
-      @java.lang.Override
-      public com.google.protobuf.Parser<Relations> getParserForType() {
-        return PARSER;
+      private Relation(int index, int value) {
+        this.index = index;
+        this.value = value;
       }
 
-      /**
-       * Protobuf enum {@code Person.Relations.Relation}
-       */
-      public enum Relation
-          implements com.google.protobuf.ProtocolMessageEnum {
-        /**
-         * <code>Relational = 1;</code>
-         *
-         * <pre>
-         * rokoni
-         * </pre>
-         */
-        Relational(0, 1),
-        /**
-         * <code>Friend = 2;</code>
-         *
-         * <pre>
-         * barát
-         * </pre>
-         */
-        Friend(1, 2),
-        /**
-         * <code>Girlfriend = 3;</code>
-         *
-         * <pre>
-         * csajom
-         * </pre>
-         */
-        Girlfriend(2, 3),
-        /**
-         * <code>Boyfriend = 4;</code>
-         *
-         * <pre>
-         * pasim
-         * </pre>
-         */
-        Boyfriend(3, 4),
-        /**
-         * <code>Father = 5;</code>
-         *
-         * <pre>
-         * apa
-         * </pre>
-         */
-        Father(4, 5),
-        /**
-         * <code>Mother = 6;</code>
-         *
-         * <pre>
-         * anya
-         * </pre>
-         */
-        Mother(5, 6),
-        /**
-         * <code>Neighbor = 7;</code>
-         *
-         * <pre>
-         * szomszéd
-         * </pre>
-         */
-        Neighbor(6, 7),
-        ;
-
-        /**
-         * <code>Relational = 1;</code>
-         *
-         * <pre>
-         * rokoni
-         * </pre>
-         */
-        public static final int Relational_VALUE = 1;
-        /**
-         * <code>Friend = 2;</code>
-         *
-         * <pre>
-         * barát
-         * </pre>
-         */
-        public static final int Friend_VALUE = 2;
-        /**
-         * <code>Girlfriend = 3;</code>
-         *
-         * <pre>
-         * csajom
-         * </pre>
-         */
-        public static final int Girlfriend_VALUE = 3;
-        /**
-         * <code>Boyfriend = 4;</code>
-         *
-         * <pre>
-         * pasim
-         * </pre>
-         */
-        public static final int Boyfriend_VALUE = 4;
-        /**
-         * <code>Father = 5;</code>
-         *
-         * <pre>
-         * apa
-         * </pre>
-         */
-        public static final int Father_VALUE = 5;
-        /**
-         * <code>Mother = 6;</code>
-         *
-         * <pre>
-         * anya
-         * </pre>
-         */
-        public static final int Mother_VALUE = 6;
-        /**
-         * <code>Neighbor = 7;</code>
-         *
-         * <pre>
-         * szomszéd
-         * </pre>
-         */
-        public static final int Neighbor_VALUE = 7;
-
-
-        public final int getNumber() { return value; }
-
-        public static Relation valueOf(int value) {
-          switch (value) {
-            case 1: return Relational;
-            case 2: return Friend;
-            case 3: return Girlfriend;
-            case 4: return Boyfriend;
-            case 5: return Father;
-            case 6: return Mother;
-            case 7: return Neighbor;
-            default: return null;
-          }
-        }
-
-        public static com.google.protobuf.Internal.EnumLiteMap<Relation>
-            internalGetValueMap() {
-          return internalValueMap;
-        }
-        private static com.google.protobuf.Internal.EnumLiteMap<Relation>
-            internalValueMap =
-              new com.google.protobuf.Internal.EnumLiteMap<Relation>() {
-                public Relation findValueByNumber(int number) {
-                  return Relation.valueOf(number);
-                }
-              };
-
-        public final com.google.protobuf.Descriptors.EnumValueDescriptor
-            getValueDescriptor() {
-          return getDescriptor().getValues().get(index);
-        }
-        public final com.google.protobuf.Descriptors.EnumDescriptor
-            getDescriptorForType() {
-          return getDescriptor();
-        }
-        public static final com.google.protobuf.Descriptors.EnumDescriptor
-            getDescriptor() {
-          return yano_server.YanoProto.Person.Relations.getDescriptor().getEnumTypes().get(0);
-        }
-
-        private static final Relation[] VALUES = values();
-
-        public static Relation valueOf(
-            com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-          if (desc.getType() != getDescriptor()) {
-            throw new java.lang.IllegalArgumentException(
-              "EnumValueDescriptor is not for this type.");
-          }
-          return VALUES[desc.getIndex()];
-        }
-
-        private final int index;
-        private final int value;
-
-        private Relation(int index, int value) {
-          this.index = index;
-          this.value = value;
-        }
-
-        // @@protoc_insertion_point(enum_scope:Person.Relations.Relation)
-      }
-
-      private int bitField0_;
-      // repeated .Person Person = 1;
-      public static final int PERSON_FIELD_NUMBER = 1;
-      private java.util.List<yano_server.YanoProto.Person> person_;
-      /**
-       * <code>repeated .Person Person = 1;</code>
-       */
-      public java.util.List<yano_server.YanoProto.Person> getPersonList() {
-        return person_;
-      }
-      /**
-       * <code>repeated .Person Person = 1;</code>
-       */
-      public java.util.List<? extends yano_server.YanoProto.PersonOrBuilder> 
-          getPersonOrBuilderList() {
-        return person_;
-      }
-      /**
-       * <code>repeated .Person Person = 1;</code>
-       */
-      public int getPersonCount() {
-        return person_.size();
-      }
-      /**
-       * <code>repeated .Person Person = 1;</code>
-       */
-      public yano_server.YanoProto.Person getPerson(int index) {
-        return person_.get(index);
-      }
-      /**
-       * <code>repeated .Person Person = 1;</code>
-       */
-      public yano_server.YanoProto.PersonOrBuilder getPersonOrBuilder(
-          int index) {
-        return person_.get(index);
-      }
-
-      // required .Person.Relations.Relation relation = 2;
-      public static final int RELATION_FIELD_NUMBER = 2;
-      private yano_server.YanoProto.Person.Relations.Relation relation_;
-      /**
-       * <code>required .Person.Relations.Relation relation = 2;</code>
-       */
-      public boolean hasRelation() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required .Person.Relations.Relation relation = 2;</code>
-       */
-      public yano_server.YanoProto.Person.Relations.Relation getRelation() {
-        return relation_;
-      }
-
-      private void initFields() {
-        person_ = java.util.Collections.emptyList();
-        relation_ = yano_server.YanoProto.Person.Relations.Relation.Relational;
-      }
-      private byte memoizedIsInitialized = -1;
-      public final boolean isInitialized() {
-        byte isInitialized = memoizedIsInitialized;
-        if (isInitialized != -1) return isInitialized == 1;
-
-        if (!hasRelation()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-        for (int i = 0; i < getPersonCount(); i++) {
-          if (!getPerson(i).isInitialized()) {
-            memoizedIsInitialized = 0;
-            return false;
-          }
-        }
-        memoizedIsInitialized = 1;
-        return true;
-      }
-
-      public void writeTo(com.google.protobuf.CodedOutputStream output)
-                          throws java.io.IOException {
-        getSerializedSize();
-        for (int i = 0; i < person_.size(); i++) {
-          output.writeMessage(1, person_.get(i));
-        }
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeEnum(2, relation_.getNumber());
-        }
-        getUnknownFields().writeTo(output);
-      }
-
-      private int memoizedSerializedSize = -1;
-      public int getSerializedSize() {
-        int size = memoizedSerializedSize;
-        if (size != -1) return size;
-
-        size = 0;
-        for (int i = 0; i < person_.size(); i++) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(1, person_.get(i));
-        }
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeEnumSize(2, relation_.getNumber());
-        }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
-        return size;
-      }
-
-      private static final long serialVersionUID = 0L;
-      @java.lang.Override
-      protected java.lang.Object writeReplace()
-          throws java.io.ObjectStreamException {
-        return super.writeReplace();
-      }
-
-      public static yano_server.YanoProto.Person.Relations parseFrom(
-          com.google.protobuf.ByteString data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static yano_server.YanoProto.Person.Relations parseFrom(
-          com.google.protobuf.ByteString data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static yano_server.YanoProto.Person.Relations parseFrom(byte[] data)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data);
-      }
-      public static yano_server.YanoProto.Person.Relations parseFrom(
-          byte[] data,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return PARSER.parseFrom(data, extensionRegistry);
-      }
-      public static yano_server.YanoProto.Person.Relations parseFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return PARSER.parseFrom(input);
-      }
-      public static yano_server.YanoProto.Person.Relations parseFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
-      }
-      public static yano_server.YanoProto.Person.Relations parseDelimitedFrom(java.io.InputStream input)
-          throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input);
-      }
-      public static yano_server.YanoProto.Person.Relations parseDelimitedFrom(
-          java.io.InputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input, extensionRegistry);
-      }
-      public static yano_server.YanoProto.Person.Relations parseFrom(
-          com.google.protobuf.CodedInputStream input)
-          throws java.io.IOException {
-        return PARSER.parseFrom(input);
-      }
-      public static yano_server.YanoProto.Person.Relations parseFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
-      }
-
-      public static Builder newBuilder() { return Builder.create(); }
-      public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(yano_server.YanoProto.Person.Relations prototype) {
-        return newBuilder().mergeFrom(prototype);
-      }
-      public Builder toBuilder() { return newBuilder(this); }
-
-      @java.lang.Override
-      protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        Builder builder = new Builder(parent);
-        return builder;
-      }
-      /**
-       * Protobuf type {@code Person.Relations}
-       */
-      public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements yano_server.YanoProto.Person.RelationsOrBuilder {
-        public static final com.google.protobuf.Descriptors.Descriptor
-            getDescriptor() {
-          return yano_server.YanoProto.internal_static_Person_Relations_descriptor;
-        }
-
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-            internalGetFieldAccessorTable() {
-          return yano_server.YanoProto.internal_static_Person_Relations_fieldAccessorTable
-              .ensureFieldAccessorsInitialized(
-                  yano_server.YanoProto.Person.Relations.class, yano_server.YanoProto.Person.Relations.Builder.class);
-        }
-
-        // Construct using yano_server.YanoProto.Person.Relations.newBuilder()
-        private Builder() {
-          maybeForceBuilderInitialization();
-        }
-
-        private Builder(
-            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-          super(parent);
-          maybeForceBuilderInitialization();
-        }
-        private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-            getPersonFieldBuilder();
-          }
-        }
-        private static Builder create() {
-          return new Builder();
-        }
-
-        public Builder clear() {
-          super.clear();
-          if (personBuilder_ == null) {
-            person_ = java.util.Collections.emptyList();
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            personBuilder_.clear();
-          }
-          relation_ = yano_server.YanoProto.Person.Relations.Relation.Relational;
-          bitField0_ = (bitField0_ & ~0x00000002);
-          return this;
-        }
-
-        public Builder clone() {
-          return create().mergeFrom(buildPartial());
-        }
-
-        public com.google.protobuf.Descriptors.Descriptor
-            getDescriptorForType() {
-          return yano_server.YanoProto.internal_static_Person_Relations_descriptor;
-        }
-
-        public yano_server.YanoProto.Person.Relations getDefaultInstanceForType() {
-          return yano_server.YanoProto.Person.Relations.getDefaultInstance();
-        }
-
-        public yano_server.YanoProto.Person.Relations build() {
-          yano_server.YanoProto.Person.Relations result = buildPartial();
-          if (!result.isInitialized()) {
-            throw newUninitializedMessageException(result);
-          }
-          return result;
-        }
-
-        public yano_server.YanoProto.Person.Relations buildPartial() {
-          yano_server.YanoProto.Person.Relations result = new yano_server.YanoProto.Person.Relations(this);
-          int from_bitField0_ = bitField0_;
-          int to_bitField0_ = 0;
-          if (personBuilder_ == null) {
-            if (((bitField0_ & 0x00000001) == 0x00000001)) {
-              person_ = java.util.Collections.unmodifiableList(person_);
-              bitField0_ = (bitField0_ & ~0x00000001);
-            }
-            result.person_ = person_;
-          } else {
-            result.person_ = personBuilder_.build();
-          }
-          if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-            to_bitField0_ |= 0x00000001;
-          }
-          result.relation_ = relation_;
-          result.bitField0_ = to_bitField0_;
-          onBuilt();
-          return result;
-        }
-
-        public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof yano_server.YanoProto.Person.Relations) {
-            return mergeFrom((yano_server.YanoProto.Person.Relations)other);
-          } else {
-            super.mergeFrom(other);
-            return this;
-          }
-        }
-
-        public Builder mergeFrom(yano_server.YanoProto.Person.Relations other) {
-          if (other == yano_server.YanoProto.Person.Relations.getDefaultInstance()) return this;
-          if (personBuilder_ == null) {
-            if (!other.person_.isEmpty()) {
-              if (person_.isEmpty()) {
-                person_ = other.person_;
-                bitField0_ = (bitField0_ & ~0x00000001);
-              } else {
-                ensurePersonIsMutable();
-                person_.addAll(other.person_);
-              }
-              onChanged();
-            }
-          } else {
-            if (!other.person_.isEmpty()) {
-              if (personBuilder_.isEmpty()) {
-                personBuilder_.dispose();
-                personBuilder_ = null;
-                person_ = other.person_;
-                bitField0_ = (bitField0_ & ~0x00000001);
-                personBuilder_ = 
-                  com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                     getPersonFieldBuilder() : null;
-              } else {
-                personBuilder_.addAllMessages(other.person_);
-              }
-            }
-          }
-          if (other.hasRelation()) {
-            setRelation(other.getRelation());
-          }
-          this.mergeUnknownFields(other.getUnknownFields());
-          return this;
-        }
-
-        public final boolean isInitialized() {
-          if (!hasRelation()) {
-            
-            return false;
-          }
-          for (int i = 0; i < getPersonCount(); i++) {
-            if (!getPerson(i).isInitialized()) {
-              
-              return false;
-            }
-          }
-          return true;
-        }
-
-        public Builder mergeFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws java.io.IOException {
-          yano_server.YanoProto.Person.Relations parsedMessage = null;
-          try {
-            parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-            parsedMessage = (yano_server.YanoProto.Person.Relations) e.getUnfinishedMessage();
-            throw e;
-          } finally {
-            if (parsedMessage != null) {
-              mergeFrom(parsedMessage);
-            }
-          }
-          return this;
-        }
-        private int bitField0_;
-
-        // repeated .Person Person = 1;
-        private java.util.List<yano_server.YanoProto.Person> person_ =
-          java.util.Collections.emptyList();
-        private void ensurePersonIsMutable() {
-          if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-            person_ = new java.util.ArrayList<yano_server.YanoProto.Person>(person_);
-            bitField0_ |= 0x00000001;
-           }
-        }
-
-        private com.google.protobuf.RepeatedFieldBuilder<
-            yano_server.YanoProto.Person, yano_server.YanoProto.Person.Builder, yano_server.YanoProto.PersonOrBuilder> personBuilder_;
-
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public java.util.List<yano_server.YanoProto.Person> getPersonList() {
-          if (personBuilder_ == null) {
-            return java.util.Collections.unmodifiableList(person_);
-          } else {
-            return personBuilder_.getMessageList();
-          }
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public int getPersonCount() {
-          if (personBuilder_ == null) {
-            return person_.size();
-          } else {
-            return personBuilder_.getCount();
-          }
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public yano_server.YanoProto.Person getPerson(int index) {
-          if (personBuilder_ == null) {
-            return person_.get(index);
-          } else {
-            return personBuilder_.getMessage(index);
-          }
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public Builder setPerson(
-            int index, yano_server.YanoProto.Person value) {
-          if (personBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            ensurePersonIsMutable();
-            person_.set(index, value);
-            onChanged();
-          } else {
-            personBuilder_.setMessage(index, value);
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public Builder setPerson(
-            int index, yano_server.YanoProto.Person.Builder builderForValue) {
-          if (personBuilder_ == null) {
-            ensurePersonIsMutable();
-            person_.set(index, builderForValue.build());
-            onChanged();
-          } else {
-            personBuilder_.setMessage(index, builderForValue.build());
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public Builder addPerson(yano_server.YanoProto.Person value) {
-          if (personBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            ensurePersonIsMutable();
-            person_.add(value);
-            onChanged();
-          } else {
-            personBuilder_.addMessage(value);
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public Builder addPerson(
-            int index, yano_server.YanoProto.Person value) {
-          if (personBuilder_ == null) {
-            if (value == null) {
-              throw new NullPointerException();
-            }
-            ensurePersonIsMutable();
-            person_.add(index, value);
-            onChanged();
-          } else {
-            personBuilder_.addMessage(index, value);
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public Builder addPerson(
-            yano_server.YanoProto.Person.Builder builderForValue) {
-          if (personBuilder_ == null) {
-            ensurePersonIsMutable();
-            person_.add(builderForValue.build());
-            onChanged();
-          } else {
-            personBuilder_.addMessage(builderForValue.build());
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public Builder addPerson(
-            int index, yano_server.YanoProto.Person.Builder builderForValue) {
-          if (personBuilder_ == null) {
-            ensurePersonIsMutable();
-            person_.add(index, builderForValue.build());
-            onChanged();
-          } else {
-            personBuilder_.addMessage(index, builderForValue.build());
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public Builder addAllPerson(
-            java.lang.Iterable<? extends yano_server.YanoProto.Person> values) {
-          if (personBuilder_ == null) {
-            ensurePersonIsMutable();
-            super.addAll(values, person_);
-            onChanged();
-          } else {
-            personBuilder_.addAllMessages(values);
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public Builder clearPerson() {
-          if (personBuilder_ == null) {
-            person_ = java.util.Collections.emptyList();
-            bitField0_ = (bitField0_ & ~0x00000001);
-            onChanged();
-          } else {
-            personBuilder_.clear();
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public Builder removePerson(int index) {
-          if (personBuilder_ == null) {
-            ensurePersonIsMutable();
-            person_.remove(index);
-            onChanged();
-          } else {
-            personBuilder_.remove(index);
-          }
-          return this;
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public yano_server.YanoProto.Person.Builder getPersonBuilder(
-            int index) {
-          return getPersonFieldBuilder().getBuilder(index);
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public yano_server.YanoProto.PersonOrBuilder getPersonOrBuilder(
-            int index) {
-          if (personBuilder_ == null) {
-            return person_.get(index);  } else {
-            return personBuilder_.getMessageOrBuilder(index);
-          }
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public java.util.List<? extends yano_server.YanoProto.PersonOrBuilder> 
-             getPersonOrBuilderList() {
-          if (personBuilder_ != null) {
-            return personBuilder_.getMessageOrBuilderList();
-          } else {
-            return java.util.Collections.unmodifiableList(person_);
-          }
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public yano_server.YanoProto.Person.Builder addPersonBuilder() {
-          return getPersonFieldBuilder().addBuilder(
-              yano_server.YanoProto.Person.getDefaultInstance());
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public yano_server.YanoProto.Person.Builder addPersonBuilder(
-            int index) {
-          return getPersonFieldBuilder().addBuilder(
-              index, yano_server.YanoProto.Person.getDefaultInstance());
-        }
-        /**
-         * <code>repeated .Person Person = 1;</code>
-         */
-        public java.util.List<yano_server.YanoProto.Person.Builder> 
-             getPersonBuilderList() {
-          return getPersonFieldBuilder().getBuilderList();
-        }
-        private com.google.protobuf.RepeatedFieldBuilder<
-            yano_server.YanoProto.Person, yano_server.YanoProto.Person.Builder, yano_server.YanoProto.PersonOrBuilder> 
-            getPersonFieldBuilder() {
-          if (personBuilder_ == null) {
-            personBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-                yano_server.YanoProto.Person, yano_server.YanoProto.Person.Builder, yano_server.YanoProto.PersonOrBuilder>(
-                    person_,
-                    ((bitField0_ & 0x00000001) == 0x00000001),
-                    getParentForChildren(),
-                    isClean());
-            person_ = null;
-          }
-          return personBuilder_;
-        }
-
-        // required .Person.Relations.Relation relation = 2;
-        private yano_server.YanoProto.Person.Relations.Relation relation_ = yano_server.YanoProto.Person.Relations.Relation.Relational;
-        /**
-         * <code>required .Person.Relations.Relation relation = 2;</code>
-         */
-        public boolean hasRelation() {
-          return ((bitField0_ & 0x00000002) == 0x00000002);
-        }
-        /**
-         * <code>required .Person.Relations.Relation relation = 2;</code>
-         */
-        public yano_server.YanoProto.Person.Relations.Relation getRelation() {
-          return relation_;
-        }
-        /**
-         * <code>required .Person.Relations.Relation relation = 2;</code>
-         */
-        public Builder setRelation(yano_server.YanoProto.Person.Relations.Relation value) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          bitField0_ |= 0x00000002;
-          relation_ = value;
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>required .Person.Relations.Relation relation = 2;</code>
-         */
-        public Builder clearRelation() {
-          bitField0_ = (bitField0_ & ~0x00000002);
-          relation_ = yano_server.YanoProto.Person.Relations.Relation.Relational;
-          onChanged();
-          return this;
-        }
-
-        // @@protoc_insertion_point(builder_scope:Person.Relations)
-      }
-
-      static {
-        defaultInstance = new Relations(true);
-        defaultInstance.initFields();
-      }
-
-      // @@protoc_insertion_point(class_scope:Person.Relations)
+      // @@protoc_insertion_point(enum_scope:Person.Relation)
     }
 
     private int bitField0_;
-    // required int32 meId = 1;
-    public static final int MEID_FIELD_NUMBER = 1;
-    private int meId_;
+    // required string username = 1;
+    public static final int USERNAME_FIELD_NUMBER = 1;
+    private java.lang.Object username_;
     /**
-     * <code>required int32 meId = 1;</code>
+     * <code>required string username = 1;</code>
      *
      * <pre>
      * Saját azonosítóm
      * </pre>
      */
-    public boolean hasMeId() {
+    public boolean hasUsername() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 meId = 1;</code>
+     * <code>required string username = 1;</code>
      *
      * <pre>
      * Saját azonosítóm
      * </pre>
      */
-    public int getMeId() {
-      return meId_;
+    public java.lang.String getUsername() {
+      java.lang.Object ref = username_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          username_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string username = 1;</code>
+     *
+     * <pre>
+     * Saját azonosítóm
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getUsernameBytes() {
+      java.lang.Object ref = username_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        username_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
-    // optional int32 id = 2;
-    public static final int ID_FIELD_NUMBER = 2;
-    private int id_;
+    // optional string myFriend = 2;
+    public static final int MYFRIEND_FIELD_NUMBER = 2;
+    private java.lang.Object myFriend_;
     /**
-     * <code>optional int32 id = 2;</code>
+     * <code>optional string myFriend = 2;</code>
      *
      * <pre>
      * Akivel kapcsolatba annak az azonosítója
      * </pre>
      */
-    public boolean hasId() {
+    public boolean hasMyFriend() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional int32 id = 2;</code>
+     * <code>optional string myFriend = 2;</code>
      *
      * <pre>
      * Akivel kapcsolatba annak az azonosítója
      * </pre>
      */
-    public int getId() {
-      return id_;
+    public java.lang.String getMyFriend() {
+      java.lang.Object ref = myFriend_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          myFriend_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string myFriend = 2;</code>
+     *
+     * <pre>
+     * Akivel kapcsolatba annak az azonosítója
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getMyFriendBytes() {
+      java.lang.Object ref = myFriend_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        myFriend_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     // required .Person.Chosen chosen = 3;
@@ -1334,52 +630,40 @@ public final class YanoProto {
       return chosen_;
     }
 
-    // optional .Person.Relations relations = 4;
-    public static final int RELATIONS_FIELD_NUMBER = 4;
-    private yano_server.YanoProto.Person.Relations relations_;
+    // optional .Person.Relation relation = 4;
+    public static final int RELATION_FIELD_NUMBER = 4;
+    private yano_server.YanoProto.Person.Relation relation_;
     /**
-     * <code>optional .Person.Relations relations = 4;</code>
+     * <code>optional .Person.Relation relation = 4;</code>
      */
-    public boolean hasRelations() {
+    public boolean hasRelation() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional .Person.Relations relations = 4;</code>
+     * <code>optional .Person.Relation relation = 4;</code>
      */
-    public yano_server.YanoProto.Person.Relations getRelations() {
-      return relations_;
-    }
-    /**
-     * <code>optional .Person.Relations relations = 4;</code>
-     */
-    public yano_server.YanoProto.Person.RelationsOrBuilder getRelationsOrBuilder() {
-      return relations_;
+    public yano_server.YanoProto.Person.Relation getRelation() {
+      return relation_;
     }
 
     private void initFields() {
-      meId_ = 0;
-      id_ = 0;
+      username_ = "";
+      myFriend_ = "";
       chosen_ = yano_server.YanoProto.Person.Chosen.Android;
-      relations_ = yano_server.YanoProto.Person.Relations.getDefaultInstance();
+      relation_ = yano_server.YanoProto.Person.Relation.Relationship;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasMeId()) {
+      if (!hasUsername()) {
         memoizedIsInitialized = 0;
         return false;
       }
       if (!hasChosen()) {
         memoizedIsInitialized = 0;
         return false;
-      }
-      if (hasRelations()) {
-        if (!getRelations().isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -1389,16 +673,16 @@ public final class YanoProto {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, meId_);
+        output.writeBytes(1, getUsernameBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, id_);
+        output.writeBytes(2, getMyFriendBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeEnum(3, chosen_.getNumber());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(4, relations_);
+        output.writeEnum(4, relation_.getNumber());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1411,11 +695,11 @@ public final class YanoProto {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, meId_);
+          .computeBytesSize(1, getUsernameBytes());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, id_);
+          .computeBytesSize(2, getMyFriendBytes());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1423,7 +707,7 @@ public final class YanoProto {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, relations_);
+          .computeEnumSize(4, relation_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1533,7 +817,6 @@ public final class YanoProto {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getRelationsFieldBuilder();
         }
       }
       private static Builder create() {
@@ -1542,17 +825,13 @@ public final class YanoProto {
 
       public Builder clear() {
         super.clear();
-        meId_ = 0;
+        username_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
-        id_ = 0;
+        myFriend_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
         chosen_ = yano_server.YanoProto.Person.Chosen.Android;
         bitField0_ = (bitField0_ & ~0x00000004);
-        if (relationsBuilder_ == null) {
-          relations_ = yano_server.YanoProto.Person.Relations.getDefaultInstance();
-        } else {
-          relationsBuilder_.clear();
-        }
+        relation_ = yano_server.YanoProto.Person.Relation.Relationship;
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
@@ -1585,11 +864,11 @@ public final class YanoProto {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.meId_ = meId_;
+        result.username_ = username_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.id_ = id_;
+        result.myFriend_ = myFriend_;
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
@@ -1597,11 +876,7 @@ public final class YanoProto {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        if (relationsBuilder_ == null) {
-          result.relations_ = relations_;
-        } else {
-          result.relations_ = relationsBuilder_.build();
-        }
+        result.relation_ = relation_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1618,36 +893,34 @@ public final class YanoProto {
 
       public Builder mergeFrom(yano_server.YanoProto.Person other) {
         if (other == yano_server.YanoProto.Person.getDefaultInstance()) return this;
-        if (other.hasMeId()) {
-          setMeId(other.getMeId());
+        if (other.hasUsername()) {
+          bitField0_ |= 0x00000001;
+          username_ = other.username_;
+          onChanged();
         }
-        if (other.hasId()) {
-          setId(other.getId());
+        if (other.hasMyFriend()) {
+          bitField0_ |= 0x00000002;
+          myFriend_ = other.myFriend_;
+          onChanged();
         }
         if (other.hasChosen()) {
           setChosen(other.getChosen());
         }
-        if (other.hasRelations()) {
-          mergeRelations(other.getRelations());
+        if (other.hasRelation()) {
+          setRelation(other.getRelation());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasMeId()) {
+        if (!hasUsername()) {
           
           return false;
         }
         if (!hasChosen()) {
           
           return false;
-        }
-        if (hasRelations()) {
-          if (!getRelations().isInitialized()) {
-            
-            return false;
-          }
         }
         return true;
       }
@@ -1671,100 +944,198 @@ public final class YanoProto {
       }
       private int bitField0_;
 
-      // required int32 meId = 1;
-      private int meId_ ;
+      // required string username = 1;
+      private java.lang.Object username_ = "";
       /**
-       * <code>required int32 meId = 1;</code>
+       * <code>required string username = 1;</code>
        *
        * <pre>
        * Saját azonosítóm
        * </pre>
        */
-      public boolean hasMeId() {
+      public boolean hasUsername() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 meId = 1;</code>
+       * <code>required string username = 1;</code>
        *
        * <pre>
        * Saját azonosítóm
        * </pre>
        */
-      public int getMeId() {
-        return meId_;
+      public java.lang.String getUsername() {
+        java.lang.Object ref = username_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          username_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>required int32 meId = 1;</code>
+       * <code>required string username = 1;</code>
        *
        * <pre>
        * Saját azonosítóm
        * </pre>
        */
-      public Builder setMeId(int value) {
-        bitField0_ |= 0x00000001;
-        meId_ = value;
+      public com.google.protobuf.ByteString
+          getUsernameBytes() {
+        java.lang.Object ref = username_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          username_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string username = 1;</code>
+       *
+       * <pre>
+       * Saját azonosítóm
+       * </pre>
+       */
+      public Builder setUsername(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        username_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required int32 meId = 1;</code>
+       * <code>required string username = 1;</code>
        *
        * <pre>
        * Saját azonosítóm
        * </pre>
        */
-      public Builder clearMeId() {
+      public Builder clearUsername() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        meId_ = 0;
+        username_ = getDefaultInstance().getUsername();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string username = 1;</code>
+       *
+       * <pre>
+       * Saját azonosítóm
+       * </pre>
+       */
+      public Builder setUsernameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        username_ = value;
         onChanged();
         return this;
       }
 
-      // optional int32 id = 2;
-      private int id_ ;
+      // optional string myFriend = 2;
+      private java.lang.Object myFriend_ = "";
       /**
-       * <code>optional int32 id = 2;</code>
+       * <code>optional string myFriend = 2;</code>
        *
        * <pre>
        * Akivel kapcsolatba annak az azonosítója
        * </pre>
        */
-      public boolean hasId() {
+      public boolean hasMyFriend() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional int32 id = 2;</code>
+       * <code>optional string myFriend = 2;</code>
        *
        * <pre>
        * Akivel kapcsolatba annak az azonosítója
        * </pre>
        */
-      public int getId() {
-        return id_;
+      public java.lang.String getMyFriend() {
+        java.lang.Object ref = myFriend_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          myFriend_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
       }
       /**
-       * <code>optional int32 id = 2;</code>
+       * <code>optional string myFriend = 2;</code>
        *
        * <pre>
        * Akivel kapcsolatba annak az azonosítója
        * </pre>
        */
-      public Builder setId(int value) {
-        bitField0_ |= 0x00000002;
-        id_ = value;
+      public com.google.protobuf.ByteString
+          getMyFriendBytes() {
+        java.lang.Object ref = myFriend_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          myFriend_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string myFriend = 2;</code>
+       *
+       * <pre>
+       * Akivel kapcsolatba annak az azonosítója
+       * </pre>
+       */
+      public Builder setMyFriend(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        myFriend_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 id = 2;</code>
+       * <code>optional string myFriend = 2;</code>
        *
        * <pre>
        * Akivel kapcsolatba annak az azonosítója
        * </pre>
        */
-      public Builder clearId() {
+      public Builder clearMyFriend() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        id_ = 0;
+        myFriend_ = getDefaultInstance().getMyFriend();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string myFriend = 2;</code>
+       *
+       * <pre>
+       * Akivel kapcsolatba annak az azonosítója
+       * </pre>
+       */
+      public Builder setMyFriendBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        myFriend_ = value;
         onChanged();
         return this;
       }
@@ -1805,121 +1176,40 @@ public final class YanoProto {
         return this;
       }
 
-      // optional .Person.Relations relations = 4;
-      private yano_server.YanoProto.Person.Relations relations_ = yano_server.YanoProto.Person.Relations.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          yano_server.YanoProto.Person.Relations, yano_server.YanoProto.Person.Relations.Builder, yano_server.YanoProto.Person.RelationsOrBuilder> relationsBuilder_;
+      // optional .Person.Relation relation = 4;
+      private yano_server.YanoProto.Person.Relation relation_ = yano_server.YanoProto.Person.Relation.Relationship;
       /**
-       * <code>optional .Person.Relations relations = 4;</code>
+       * <code>optional .Person.Relation relation = 4;</code>
        */
-      public boolean hasRelations() {
+      public boolean hasRelation() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional .Person.Relations relations = 4;</code>
+       * <code>optional .Person.Relation relation = 4;</code>
        */
-      public yano_server.YanoProto.Person.Relations getRelations() {
-        if (relationsBuilder_ == null) {
-          return relations_;
-        } else {
-          return relationsBuilder_.getMessage();
-        }
+      public yano_server.YanoProto.Person.Relation getRelation() {
+        return relation_;
       }
       /**
-       * <code>optional .Person.Relations relations = 4;</code>
+       * <code>optional .Person.Relation relation = 4;</code>
        */
-      public Builder setRelations(yano_server.YanoProto.Person.Relations value) {
-        if (relationsBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          relations_ = value;
-          onChanged();
-        } else {
-          relationsBuilder_.setMessage(value);
+      public Builder setRelation(yano_server.YanoProto.Person.Relation value) {
+        if (value == null) {
+          throw new NullPointerException();
         }
         bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .Person.Relations relations = 4;</code>
-       */
-      public Builder setRelations(
-          yano_server.YanoProto.Person.Relations.Builder builderForValue) {
-        if (relationsBuilder_ == null) {
-          relations_ = builderForValue.build();
-          onChanged();
-        } else {
-          relationsBuilder_.setMessage(builderForValue.build());
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .Person.Relations relations = 4;</code>
-       */
-      public Builder mergeRelations(yano_server.YanoProto.Person.Relations value) {
-        if (relationsBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008) &&
-              relations_ != yano_server.YanoProto.Person.Relations.getDefaultInstance()) {
-            relations_ =
-              yano_server.YanoProto.Person.Relations.newBuilder(relations_).mergeFrom(value).buildPartial();
-          } else {
-            relations_ = value;
-          }
-          onChanged();
-        } else {
-          relationsBuilder_.mergeFrom(value);
-        }
-        bitField0_ |= 0x00000008;
-        return this;
-      }
-      /**
-       * <code>optional .Person.Relations relations = 4;</code>
-       */
-      public Builder clearRelations() {
-        if (relationsBuilder_ == null) {
-          relations_ = yano_server.YanoProto.Person.Relations.getDefaultInstance();
-          onChanged();
-        } else {
-          relationsBuilder_.clear();
-        }
-        bitField0_ = (bitField0_ & ~0x00000008);
-        return this;
-      }
-      /**
-       * <code>optional .Person.Relations relations = 4;</code>
-       */
-      public yano_server.YanoProto.Person.Relations.Builder getRelationsBuilder() {
-        bitField0_ |= 0x00000008;
+        relation_ = value;
         onChanged();
-        return getRelationsFieldBuilder().getBuilder();
+        return this;
       }
       /**
-       * <code>optional .Person.Relations relations = 4;</code>
+       * <code>optional .Person.Relation relation = 4;</code>
        */
-      public yano_server.YanoProto.Person.RelationsOrBuilder getRelationsOrBuilder() {
-        if (relationsBuilder_ != null) {
-          return relationsBuilder_.getMessageOrBuilder();
-        } else {
-          return relations_;
-        }
-      }
-      /**
-       * <code>optional .Person.Relations relations = 4;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilder<
-          yano_server.YanoProto.Person.Relations, yano_server.YanoProto.Person.Relations.Builder, yano_server.YanoProto.Person.RelationsOrBuilder> 
-          getRelationsFieldBuilder() {
-        if (relationsBuilder_ == null) {
-          relationsBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              yano_server.YanoProto.Person.Relations, yano_server.YanoProto.Person.Relations.Builder, yano_server.YanoProto.Person.RelationsOrBuilder>(
-                  relations_,
-                  getParentForChildren(),
-                  isClean());
-          relations_ = null;
-        }
-        return relationsBuilder_;
+      public Builder clearRelation() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        relation_ = yano_server.YanoProto.Person.Relation.Relationship;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:Person)
@@ -2625,11 +1915,6 @@ public final class YanoProto {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Person_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_Person_Relations_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_Person_Relations_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_Datas_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -2643,18 +1928,16 @@ public final class YanoProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\034src/main/protobuf/yano.proto\"\343\002\n\006Perso" +
-      "n\022\014\n\004meId\030\001 \002(\005\022\n\n\002id\030\002 \001(\005\022\036\n\006chosen\030\003 " +
-      "\002(\0162\016.Person.Chosen\022$\n\trelations\030\004 \001(\0132\021" +
-      ".Person.Relations\032\277\001\n\tRelations\022\027\n\006Perso" +
-      "n\030\001 \003(\0132\007.Person\022,\n\010relation\030\002 \002(\0162\032.Per" +
-      "son.Relations.Relation\"k\n\010Relation\022\016\n\nRe" +
-      "lational\020\001\022\n\n\006Friend\020\002\022\016\n\nGirlfriend\020\003\022\r" +
-      "\n\tBoyfriend\020\004\022\n\n\006Father\020\005\022\n\n\006Mother\020\006\022\014\n" +
-      "\010Neighbor\020\007\"7\n\006Chosen\022\013\n\007Android\020\001\022\007\n\003iO" +
-      "S\020\002\022\013\n\007Windows\020\003\022\n\n\006Others\020\004\" \n\005Datas\022\027\n",
-      "\006Person\030\001 \003(\0132\007.PersonB\030\n\013yano_serverB\tY" +
-      "anoProto"
+      "\n\034src/main/protobuf/yano.proto\"\245\002\n\006Perso" +
+      "n\022\020\n\010username\030\001 \002(\t\022\020\n\010myFriend\030\002 \001(\t\022\036\n" +
+      "\006chosen\030\003 \002(\0162\016.Person.Chosen\022\"\n\010relatio" +
+      "n\030\004 \001(\0162\020.Person.Relation\"7\n\006Chosen\022\013\n\007A" +
+      "ndroid\020\001\022\007\n\003iOS\020\002\022\013\n\007Windows\020\003\022\n\n\006Others" +
+      "\020\004\"z\n\010Relation\022\020\n\014Relationship\020\001\022\n\n\006Frie" +
+      "nd\020\002\022\016\n\nGirlfriend\020\003\022\r\n\tBoyfriend\020\004\022\n\n\006F" +
+      "ather\020\005\022\n\n\006Mother\020\006\022\014\n\010Neighbor\020\007\022\013\n\007Tes" +
+      "tver\020\010\" \n\005Datas\022\027\n\006Person\030\001 \003(\0132\007.Person" +
+      "B\030\n\013yano_serverB\tYanoProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -2666,13 +1949,7 @@ public final class YanoProto {
           internal_static_Person_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_Person_descriptor,
-              new java.lang.String[] { "MeId", "Id", "Chosen", "Relations", });
-          internal_static_Person_Relations_descriptor =
-            internal_static_Person_descriptor.getNestedTypes().get(0);
-          internal_static_Person_Relations_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_Person_Relations_descriptor,
-              new java.lang.String[] { "Person", "Relation", });
+              new java.lang.String[] { "Username", "MyFriend", "Chosen", "Relation", });
           internal_static_Datas_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_Datas_fieldAccessorTable = new

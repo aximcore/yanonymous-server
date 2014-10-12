@@ -83,8 +83,7 @@ public class YanonymousActivity extends android.app.Activity
                     @Override
                     public void onClick(DialogInterface dialog, int id){
                         YourWorldView.anonyms.get(0).setUserName(((EditText)viewSend.findViewById(R.id.editText)).getText().toString());
-                        new Thread(new SocketClient(YourWorldView.anonyms,YourWorldView.relations)).start();
-
+                        SocketHivasa();
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
@@ -95,6 +94,10 @@ public class YanonymousActivity extends android.app.Activity
                     }
                 });
          builder.create().show();
+    }
+
+    public void SocketHivasa(){
+        new Thread(new SocketClient(this)).start();
     }
 
 

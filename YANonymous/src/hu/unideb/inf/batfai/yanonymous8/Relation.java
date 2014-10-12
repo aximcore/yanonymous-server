@@ -56,6 +56,14 @@ public class Relation extends LocalCommunityObject implements
         name = "Relationship";
     }
 
+    public String getFriend(){
+        return this.nodeB.username;
+    }
+
+    public String getKapcs(){
+        return this.name;
+    }
+
     @Override
     public int getColor() {
 

@@ -76,11 +76,11 @@ public class YourWorldView extends android.view.View {
 	private static int textSize = 44;
 	private static android.graphics.Paint edgeTextPaint = new android.graphics.Paint();
 
-    private Context context;
+    //private Context context;
 
 	public YourWorldView(android.content.Context context) {
 		super(context);
-        this.context = context;
+      //  this.context = context;
 		cinit();
 
 	}

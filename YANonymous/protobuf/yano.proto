@@ -5,7 +5,7 @@ option java_outer_classname = "YanoProto";
 
 message Person{
     required string username = 1;    // Saját azonosítóm
-    optional string Friend = 2;      // Akivel kapcsolatba annak az azonosítója
+    optional string myFriend = 2;      // Akivel kapcsolatba annak az azonosítója
     enum Chosen {               // Kit/mit választott
         Android = 1;
         iOS = 2;
@@ -15,23 +15,24 @@ message Person{
 
     required Chosen chosen = 3;
 
-    message Relations{
-        repeated Person Person = 1;
+    //message Relations{
+        //repeated Person Person = 1;
 
         enum Relation{
-            Relational = 1;     // rokoni
+            Relationship = 1;     // rokoni
             Friend = 2;         // barát
             Girlfriend = 3;     // csajom
             Boyfriend = 4;      // pasim
             Father = 5;         // apa
             Mother = 6;         // anya
             Neighbor = 7;       // szomszéd
+            Testver = 8;
         }
 
-        required Relation relation = 2;
-    }
+        //required Relation relation_ = 2;
+    //}
 
-    optional Relations relations= 4;
+    optional Relation relation= 4;
 }
 
 message Datas{

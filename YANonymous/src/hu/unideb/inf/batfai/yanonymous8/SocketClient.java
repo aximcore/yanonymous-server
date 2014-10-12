@@ -18,30 +18,57 @@ import hu.unideb.inf.batfai.yanonymous8.YanoProto.Datas.Builder;
 /**
  * Created by aximcore on 2014.10.04..
  */
-public class SocketClient implements Runnable {
-    List<Anonymous> a; List<Relation> b; int i = 0;
+public class SocketClient extends android.view.View implements Runnable  {
+    List<Anonymous> a = YourWorldView.anonyms;;
+    List<Relation> b = YourWorldView.relations;
+    int i = 0;
 
-    public SocketClient( List<Anonymous> inData, List<Relation> relation ) {
-        b = relation;
-        a = inData;
+    public SocketClient(android.content.Context context){
+        super(context);
+        //Toast.makeText(getContext(), /*b.get(i).nodeB.username*/ b.get(2).getKapcs(), Toast.LENGTH_SHORT).show();
     }
 
-    private Person readData(Anonymous a){
+    private Person readData(Anonymous any){
 
         Person.Builder person = Person.newBuilder();
 
-        if ( a.name == "Android")
+        if ( any.name == "Android")
             person.setChosen(Person.Chosen.Android);
-        else if ( a.name == "iOS")
+        else if ( any.name == "iOS")
             person.setChosen(Person.Chosen.iOS);
-        else if ( a.name == "Windows")
+        else if ( any.name == "Windows")
             person.setChosen(Person.Chosen.Windows);
         else
             person.setChosen(Person.Chosen.Others);
 
-        person.setUsername(a.username);
-        person.setFriend(b.get(i).nodeB.username);
-        i++;
+        person.setUsername(any.username);
+
+        if ( i < a.size()-1 ) {
+            person.setMyFriend(b.get(i).getFriend());
+
+            if ( b.get(i).getKapcs() == "Relationship")
+                person.setRelation(Person.Relation.Relationship);
+            else if ( b.get(i).getKapcs() == "Csajom")
+                person.setRelation(Person.Relation.Girlfriend);
+            else if ( b.get(i).getKapcs() == "Fiúm")
+                person.setRelation(Person.Relation.Boyfriend);
+            else if (b.get(i).getKapcs() == "Muter")
+                person.setRelation(Person.Relation.Mother);
+            else if (b.get(i).getKapcs() == "Fater")
+                person.setRelation(Person.Relation.Father);
+            else if (b.get(i).getKapcs() == "Tesó")
+                person.setRelation(Person.Relation.Testver);
+            else if (b.get(i).getKapcs() == "Szomszéd")
+                person.setRelation(Person.Relation.Neighbor);
+
+
+
+            i++;
+        }
+
+
+        //if ( b.size() > i)
+          //  i++;
 
         return person.build();
     }
@@ -52,11 +79,11 @@ public class SocketClient implements Runnable {
 
     public void Connect() {
         try {
-            Socket client = new Socket("192.168.1.100", 9090);
+            Socket client = new Socket("192.168.1.103", 9090);
             Datas.Builder datas = Datas.newBuilder();
 
-            for (Anonymous i : a)
-                datas.addPerson(readData(i));
+            for (int i = 0; i < a.size();i++)
+                datas.addPerson(readData(a.get(i)));
 
             datas.build().writeTo(client.getOutputStream());
             datas.clear();
